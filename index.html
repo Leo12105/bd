@@ -16,32 +16,67 @@
             min-height: 100vh;
         }
 
-        /* ======= HEADER CON REY EXÁNIME ======= */
+        /* ======= HEADER CON NIEVE ANIMADA ======= */
         header {
             background: 
-                linear-gradient(135deg, rgba(8, 20, 35, 0.92) 0%, rgba(10, 30, 50, 0.85) 50%, rgba(15, 35, 65, 0.92) 100%),
-                url('https://wallpapers.com/images/hd/the-lich-king-with-blue-eyes-fpqsuxi3pq6f0u8z.jpg') center/cover no-repeat;
+                radial-gradient(ellipse at center, rgba(78, 195, 255, 0.2) 0%, transparent 70%),
+                linear-gradient(135deg, #051020 0%, #0a2540 25%, #143055 50%, #0a2540 75%, #051020 100%);
             border-bottom: 3px solid #4ec3ff;
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 30px rgba(0, 100, 200, 0.4);
-            position: relative;
             overflow: hidden;
         }
-        
+
+        /* Capa 1 de nieve (lenta y grande) */
         header::before {
-            content: '';
+            content: '❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆';
             position: absolute;
-            top: 0;
+            top: -100%;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 32, 0.6) 100%);
+            bottom: -100%;
+            color: rgba(168, 224, 255, 0.4);
+            font-size: 1.8em;
+            letter-spacing: 60px;
+            line-height: 80px;
+            overflow: hidden;
             pointer-events: none;
-            z-index: 1;
+            animation: snowfall1 15s linear infinite;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        /* Capa 2 de nieve (rápida y pequeña) */
+        header::after {
+            content: '·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            right: 0;
+            bottom: -100%;
+            color: rgba(200, 240, 255, 0.6);
+            font-size: 1em;
+            letter-spacing: 30px;
+            line-height: 50px;
+            overflow: hidden;
+            pointer-events: none;
+            animation: snowfall2 8s linear infinite;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        @keyframes snowfall1 {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50%); }
+        }
+
+        @keyframes snowfall2 {
+            0% { transform: translateY(0) translateX(-10px); }
+            100% { transform: translateY(50%) translateX(10px); }
         }
 
         .header-content {
@@ -60,28 +95,41 @@
             border-radius: 50%;
             border: 3px solid #4ec3ff;
             background: 
-                radial-gradient(circle, #1a3a5c 0%, #0a1620 100%);
+                radial-gradient(circle at 30% 30%, #a8e0ff, #4ec3ff 40%, #1a4570 100%);
             box-shadow: 
                 0 0 25px rgba(78, 195, 255, 0.6),
-                inset 0 0 15px rgba(78, 195, 255, 0.3);
-            background-image: url('https://static.wikia.nocookie.net/wowwiki/images/9/9f/Lich_King_Wrath_cinematic.jpg');
-            background-size: cover;
-            background-position: center top;
+                inset 0 0 20px rgba(168, 224, 255, 0.4);
             flex-shrink: 0;
             animation: frostGlow 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            position: relative;
+        }
+
+        .lich-king-logo::before {
+            content: '👑';
+            filter: drop-shadow(0 0 10px rgba(168, 224, 255, 0.9));
+            animation: crownFloat 4s ease-in-out infinite;
         }
 
         @keyframes frostGlow {
             0%, 100% { 
                 box-shadow: 
                     0 0 25px rgba(78, 195, 255, 0.6),
-                    inset 0 0 15px rgba(78, 195, 255, 0.3);
+                    inset 0 0 20px rgba(168, 224, 255, 0.4);
             }
             50% { 
                 box-shadow: 
-                    0 0 40px rgba(120, 220, 255, 0.9),
-                    inset 0 0 20px rgba(120, 220, 255, 0.5);
+                    0 0 45px rgba(120, 220, 255, 0.9),
+                    inset 0 0 30px rgba(200, 240, 255, 0.6);
             }
+        }
+
+        @keyframes crownFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(2deg); }
         }
 
         .header-text {
@@ -589,7 +637,7 @@
 
         @media (max-width: 600px) {
             header h1 { font-size: 1.5em; }
-            .lich-king-logo { width: 70px; height: 70px; }
+            .lich-king-logo { width: 70px; height: 70px; font-size: 2.2em; }
             .header-content { flex-direction: column; gap: 15px; }
             .header-text { text-align: center; }
             .input-row { flex-direction: column; }
