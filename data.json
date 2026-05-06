@@ -48,6 +48,13 @@
       "icon": "inv_misc_idol_01",
       "quality": "4",
       "category": "tcg"
+    },
+    {
+      "id": 34493,
+      "name": "Dragon Kite",
+      "icon": "inv_misc_dragonkite_02",
+      "quality": "3",
+      "category": "tcg"
     }
   ]
 }
