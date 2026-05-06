@@ -1,0 +1,13 @@
+{
+  "categories": [
+    { "id": "tcg", "name": "Juegos de Cartas", "emoji": "🎴" },
+    { "id": "legendary", "name": "Legendarios", "emoji": "🌟" },
+    { "id": "mounts", "name": "Monturas", "emoji": "🐉" },
+    { "id": "pets", "name": "Mascotas", "emoji": "🐾" },
+    { "id": "weapons", "name": "Armas", "emoji": "⚔️" },
+    { "id": "armor", "name": "Armadura", "emoji": "🛡️" },
+    { "id": "consumables", "name": "Consumibles", "emoji": "🧪" },
+    { "id": "misc", "name": "Miscelánea", "emoji": "📦" }
+  ],
+  "items": []
+}
