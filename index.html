@@ -104,7 +104,6 @@
             display: inline-block;
         }
 
-        /* Separador ornamental dorado */
         .ornament {
             display: flex;
             align-items: center;
@@ -147,6 +146,7 @@
             position: relative;
             transition: all 0.4s ease;
             cursor: pointer;
+            overflow: hidden;
         }
 
         .hero-cta::before {
@@ -171,7 +171,6 @@
             transform: translateX(100%);
         }
 
-        /* Indicador de scroll */
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -218,6 +217,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
         }
         .navbar-brand {
             font-size: 1.1rem;
@@ -235,6 +235,46 @@
             color: var(--text-secondary);
             font-weight: 400;
             font-size: 0.85rem;
+        }
+
+        .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+        }
+        .status-dot.connected { background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.5); }
+        .status-dot.viewer { background: var(--gold); box-shadow: 0 0 8px rgba(201, 169, 97, 0.5); }
+        .status-dot.error { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+
+        .btn-auth {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--border-medium);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        .btn-auth:hover {
+            border-color: var(--gold);
+            color: var(--gold-bright);
         }
 
         /* ========================================
@@ -332,15 +372,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
             border-color: var(--gold);
             color: var(--gold-bright);
         }
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             background: var(--gold);
             color: var(--bg-primary);
             box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
@@ -408,8 +446,43 @@
             letter-spacing: 0.1em;
         }
 
+        /* Sync indicator */
+        .sync-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .sync-overlay.show { display: flex; }
+        .sync-content {
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            padding: 32px 48px;
+            text-align: center;
+        }
+        .sync-spinner {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-medium);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .sync-text {
+            color: var(--gold-bright);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
         /* ========================================
-           FILTROS - TABS ESTILO BLIZZARD
+           FILTROS
            ======================================== */
         .filters-panel {
             background: var(--bg-card);
@@ -482,7 +555,6 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
         
-        /* Indicador de calidad - línea izquierda */
         .item-card.poor { border-left: 2px solid #9d9d9d; }
         .item-card.common { border-left: 2px solid #ffffff; }
         .item-card.uncommon { border-left: 2px solid #1eff00; }
@@ -529,7 +601,6 @@
             border-color: var(--gold);
         }
         
-        /* Bordes de iconos según calidad */
         .item-card.poor .icon-wrapper img { border-color: #9d9d9d; }
         .item-card.common .icon-wrapper img { border-color: #555; }
         .item-card.uncommon .icon-wrapper img { border-color: #1eff00; }
@@ -597,6 +668,11 @@
             background: rgba(200, 69, 69, 0.05);
         }
 
+        /* Modo solo lectura: ocultar acciones de edición */
+        body.viewer-mode .editor-only {
+            display: none !important;
+        }
+
         /* ========================================
            MODAL
            ======================================== */
@@ -621,6 +697,8 @@
             width: 100%;
             position: relative;
             box-shadow: 0 0 60px rgba(201, 169, 97, 0.15);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .modal::before, .modal::after {
             content: '';
@@ -652,7 +730,7 @@
             text-transform: uppercase;
             margin-top: 16px;
         }
-        .modal label:first-child { margin-top: 0; }
+        .modal label:first-of-type { margin-top: 0; }
         .modal input, .modal select {
             width: 100%;
             padding: 12px;
@@ -665,6 +743,21 @@
         }
         .modal input:focus, .modal select:focus {
             border-color: var(--gold);
+        }
+        .modal-info {
+            background: var(--bg-primary);
+            border-left: 2px solid var(--gold);
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .modal-info code {
+            background: var(--bg-card);
+            padding: 1px 6px;
+            color: var(--gold-bright);
+            font-size: 0.8rem;
         }
         .modal-buttons {
             display: flex;
@@ -765,8 +858,8 @@
            ======================================== */
         @media (max-width: 768px) {
             .hero { min-height: 500px; }
-            .navbar-content { padding: 0 20px; }
-            .navbar-brand { font-size: 0.9rem; }
+            .navbar-content { padding: 0 20px; flex-direction: column; }
+            .navbar-brand { font-size: 0.9rem; text-align: center; }
             .main-container { padding: 40px 20px; }
             .panel { padding: 20px; }
             .items-grid { grid-template-columns: 1fr; }
@@ -778,7 +871,7 @@
 </head>
 <body>
 
-    <!-- ========== HERO PANTALLA COMPLETA ========== -->
+    <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-overline">Reino de Azeroth · Wrath of the Lich King</div>
@@ -803,18 +896,25 @@
             <div class="navbar-brand">
                 After WoW <span class="divider">|</span> <span class="label">Wiki de Iconos</span>
             </div>
+            <div class="auth-status">
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Cargando...</span>
+                </div>
+                <button class="btn-auth" id="authBtn" onclick="openAuthModal()">Iniciar Sesión</button>
+            </div>
         </div>
     </nav>
 
     <!-- ========== CONTENIDO PRINCIPAL ========== -->
     <main class="main-container" id="wiki">
         
-        <div class="section-header">
+        <div class="section-header editor-only">
             <div class="section-overline">Gestión de objetos</div>
             <h2 class="section-title">Añadir Items al Compendio</h2>
         </div>
 
-        <div class="panel">
+        <div class="panel editor-only">
             <div class="panel-row">
                 <span class="panel-label">Categoría</span>
                 <select id="categorySelect" class="select-field"></select>
@@ -840,6 +940,7 @@
                 <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
                 <button class="btn btn-secondary" onclick="manageCategories()">Gestionar Categorías</button>
+                <button class="btn btn-secondary" onclick="syncFromGitHub()">↻ Sincronizar</button>
                 <button class="btn btn-danger" onclick="clearAll()">Vaciar Compendio</button>
             </div>
         </div>
@@ -856,17 +957,36 @@
         <div id="emptyState" class="empty-state">
             <div class="icon">⊘</div>
             <h3>El compendio está vacío</h3>
-            <p>Añade tu primer item utilizando el panel superior</p>
+            <p>No hay items registrados todavía</p>
         </div>
     </main>
 
-    <!-- ========== FOOTER ========== -->
     <footer>
         <div><span class="gold">After WoW</span> · Wiki de Iconos del Reino</div>
         <div style="margin-top:8px; font-size:0.75rem; opacity:0.6;">Forjado en las profundidades de Azeroth</div>
     </footer>
 
     <!-- ========== MODALES ========== -->
+    
+    <!-- Modal de autenticación -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <h2>🔐 Acceso de Administrador</h2>
+            <div class="modal-info">
+                Introduce tu <strong>Personal Access Token</strong> de GitHub para poder editar el compendio.<br><br>
+                Empieza por <code>github_pat_...</code><br><br>
+                El token se guardará en este dispositivo y no tendrás que volver a introducirlo.
+            </div>
+            <label>Token de GitHub</label>
+            <input type="password" id="tokenInput" placeholder="github_pat_...">
+            <div class="modal-buttons">
+                <button class="btn btn-danger" onclick="logout()" id="logoutBtn" style="display:none;">Cerrar Sesión</button>
+                <button class="btn btn-secondary" onclick="closeModal('authModal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveToken()">Acceder</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="newCategoryModal">
         <div class="modal">
             <h2>Nueva Categoría</h2>
@@ -903,52 +1023,255 @@
         </div>
     </div>
 
+    <!-- Overlay de sincronización -->
+    <div class="sync-overlay" id="syncOverlay">
+        <div class="sync-content">
+            <div class="sync-spinner"></div>
+            <div class="sync-text" id="syncText">Sincronizando con GitHub...</div>
+        </div>
+    </div>
+
     <div class="toast" id="toast"></div>
 
     <script>
+        // ============================================
+        // CONFIGURACIÓN GITHUB
+        // ============================================
+        const GITHUB_USER = 'Leo12105';
+        const GITHUB_REPO = 'bd';
+        const GITHUB_BRANCH = 'main';
+        const DATA_FILE = 'data.json';
+        const TOKEN_KEY = 'afterwow_github_token';
+
+        // URLs
+        const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${DATA_FILE}`;
+        const API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${DATA_FILE}`;
+
+        // CORS proxies para Wowhead
         const CORS_PROXIES = [
             'https://corsproxy.io/?',
             'https://api.allorigins.win/raw?url=',
             'https://api.codetabs.com/v1/proxy?quest=',
         ];
 
-        const STORAGE_KEY = 'afterwow_wiki_data';
         const EMOJIS = ['📦', '🎴', '⚔️', '🛡️', '🧪', '🐉', '🐾', '✨', '👑', '💎', '🏹', '🪄', '🔮', '⚡', '🔥', '❄️', '🌟', '💀', '🦅', '🐅', '🐺', '🐲', '🎭', '🎁', '💍', '🗡️', '🏆', '⭐', '💰', '🌙'];
 
-        let appData = {
-            categories: [
-                { id: 'tcg', name: 'Juegos de Cartas', emoji: '🎴' },
-                { id: 'legendary', name: 'Legendarios', emoji: '🌟' },
-                { id: 'mounts', name: 'Monturas', emoji: '🐉' },
-                { id: 'pets', name: 'Mascotas', emoji: '🐾' },
-                { id: 'weapons', name: 'Armas', emoji: '⚔️' },
-                { id: 'armor', name: 'Armadura', emoji: '🛡️' },
-                { id: 'consumables', name: 'Consumibles', emoji: '🧪' },
-                { id: 'misc', name: 'Miscelánea', emoji: '📦' }
-            ],
-            items: []
-        };
-        
+        // ============================================
+        // ESTADO
+        // ============================================
+        let appData = { categories: [], items: [] };
+        let fileSha = null; // Necesario para actualizar archivos en GitHub
         let currentCategoryFilter = 'all';
         let workingProxy = null;
         let selectedEmoji = '📦';
         let itemToChangeCategory = null;
+        let isAuthenticated = false;
 
-        function saveData() {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); }
-            catch (e) { showToast('Error al guardar datos', 'error'); }
+        // ============================================
+        // AUTENTICACIÓN
+        // ============================================
+        function getToken() {
+            return localStorage.getItem(TOKEN_KEY);
         }
 
-        function loadData() {
+        function setToken(token) {
+            localStorage.setItem(TOKEN_KEY, token);
+        }
+
+        function removeToken() {
+            localStorage.removeItem(TOKEN_KEY);
+        }
+
+        function openAuthModal() {
+            const token = getToken();
+            document.getElementById('tokenInput').value = token || '';
+            document.getElementById('logoutBtn').style.display = token ? 'inline-block' : 'none';
+            document.getElementById('authModal').classList.add('show');
+        }
+
+        async function saveToken() {
+            const token = document.getElementById('tokenInput').value.trim();
+            if (!token) {
+                showToast('Introduce un token válido', 'error');
+                return;
+            }
+
+            // Verificar que el token funciona
+            showSync('Verificando token...');
             try {
-                const saved = localStorage.getItem(STORAGE_KEY);
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    if (parsed.categories && parsed.items) appData = parsed;
+                const response = await fetch(API_URL, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (!response.ok) {
+                    hideSync();
+                    showToast('Token inválido o sin permisos', 'error');
+                    return;
                 }
-            } catch (e) {}
+
+                setToken(token);
+                isAuthenticated = true;
+                hideSync();
+                closeModal('authModal');
+                updateAuthUI();
+                showToast('Sesión iniciada correctamente');
+                await syncFromGitHub();
+            } catch (e) {
+                hideSync();
+                showToast('Error al verificar token: ' + e.message, 'error');
+            }
         }
 
+        function logout() {
+            if (!confirm('¿Cerrar sesión y eliminar el token de este dispositivo?')) return;
+            removeToken();
+            isAuthenticated = false;
+            closeModal('authModal');
+            updateAuthUI();
+            showToast('Sesión cerrada');
+        }
+
+        function updateAuthUI() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            const btn = document.getElementById('authBtn');
+            const body = document.body;
+
+            if (isAuthenticated) {
+                dot.className = 'status-dot connected';
+                text.textContent = 'Editor conectado';
+                btn.textContent = 'Mi Sesión';
+                body.classList.remove('viewer-mode');
+            } else {
+                dot.className = 'status-dot viewer';
+                text.textContent = 'Modo Visualización';
+                btn.textContent = 'Iniciar Sesión';
+                body.classList.add('viewer-mode');
+            }
+        }
+
+        // ============================================
+        // GITHUB API
+        // ============================================
+        function showSync(text = 'Sincronizando con GitHub...') {
+            document.getElementById('syncText').textContent = text;
+            document.getElementById('syncOverlay').classList.add('show');
+        }
+
+        function hideSync() {
+            document.getElementById('syncOverlay').classList.remove('show');
+        }
+
+        // Cargar desde GitHub (siempre, sin token)
+        async function loadFromGitHub() {
+            try {
+                // Usar raw URL con timestamp para evitar caché
+                const response = await fetch(`${RAW_URL}?t=${Date.now()}`);
+                if (!response.ok) throw new Error('No se pudo cargar data.json');
+                
+                const data = await response.json();
+                if (data.categories && data.items) {
+                    appData = data;
+                }
+
+                // Si está autenticado, también obtener el SHA del archivo (necesario para actualizar)
+                if (isAuthenticated) {
+                    await refreshFileSha();
+                }
+                
+                return true;
+            } catch (e) {
+                console.error('Error cargando desde GitHub:', e);
+                return false;
+            }
+        }
+
+        async function refreshFileSha() {
+            const token = getToken();
+            if (!token) return;
+            
+            try {
+                const response = await fetch(API_URL, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    fileSha = data.sha;
+                }
+            } catch (e) {
+                console.error('Error obteniendo SHA:', e);
+            }
+        }
+
+        // Guardar en GitHub
+        async function saveToGitHub(commitMessage = 'Update data.json') {
+            const token = getToken();
+            if (!token) {
+                showToast('No tienes permisos para editar', 'error');
+                return false;
+            }
+
+            if (!fileSha) {
+                await refreshFileSha();
+                if (!fileSha) {
+                    showToast('No se pudo obtener el archivo de GitHub', 'error');
+                    return false;
+                }
+            }
+
+            showSync('Guardando en GitHub...');
+            try {
+                const content = JSON.stringify(appData, null, 2);
+                const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+                const response = await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: commitMessage,
+                        content: encodedContent,
+                        sha: fileSha,
+                        branch: GITHUB_BRANCH
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Error al guardar');
+                }
+
+                const result = await response.json();
+                fileSha = result.content.sha; // Actualizar SHA para el siguiente guardado
+                hideSync();
+                return true;
+            } catch (e) {
+                hideSync();
+                showToast('Error al guardar: ' + e.message, 'error');
+                console.error(e);
+                return false;
+            }
+        }
+
+        async function syncFromGitHub() {
+            showSync('Sincronizando...');
+            const ok = await loadFromGitHub();
+            hideSync();
+            if (ok) {
+                renderCategorySelect();
+                renderCategoryFilters();
+                renderItems();
+                showToast('Sincronizado con GitHub');
+            } else {
+                showToast('Error al sincronizar', 'error');
+            }
+        }
+
+        // ============================================
+        // INTERFACE
+        // ============================================
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -1009,17 +1332,22 @@
             });
         }
 
-        function saveNewCategory() {
+        async function saveNewCategory() {
             const name = document.getElementById('newCatName').value.trim();
-            if (!name) { showToast('Indica un nombre para la categoría', 'warning'); return; }
+            if (!name) { showToast('Indica un nombre', 'warning'); return; }
             
             const id = 'cat_' + Date.now();
             appData.categories.push({ id, name, emoji: selectedEmoji });
-            saveData();
-            renderCategorySelect();
-            document.getElementById('categorySelect').value = id;
-            closeModal('newCategoryModal');
-            showToast(`Categoría creada: ${name}`);
+            
+            const ok = await saveToGitHub(`Add category: ${name}`);
+            if (ok) {
+                renderCategorySelect();
+                document.getElementById('categorySelect').value = id;
+                closeModal('newCategoryModal');
+                showToast(`Categoría creada: ${name}`);
+            } else {
+                appData.categories.pop(); // Revertir
+            }
         }
 
         function openChangeCategoryModal(itemIndex) {
@@ -1036,15 +1364,21 @@
             document.getElementById('changeCategoryModal').classList.add('show');
         }
 
-        function saveChangeCategory() {
+        async function saveChangeCategory() {
             const newCat = document.getElementById('changeCatSelect').value;
-            if (itemToChangeCategory !== null) {
-                appData.items[itemToChangeCategory].category = newCat;
-                saveData();
+            if (itemToChangeCategory === null) return;
+            
+            const oldCat = appData.items[itemToChangeCategory].category;
+            appData.items[itemToChangeCategory].category = newCat;
+            
+            const ok = await saveToGitHub(`Move item to ${newCat}`);
+            if (ok) {
                 renderCategoryFilters();
                 renderItems();
                 closeModal('changeCategoryModal');
                 showToast('Categoría actualizada');
+            } else {
+                appData.items[itemToChangeCategory].category = oldCat; // Revertir
             }
         }
 
@@ -1068,7 +1402,7 @@
             document.getElementById('manageCategoriesModal').classList.add('show');
         }
 
-        function deleteCategory(index) {
+        async function deleteCategory(index) {
             const cat = appData.categories[index];
             const count = appData.items.filter(i => i.category === cat.id).length;
             
@@ -1079,13 +1413,17 @@
                 if (!confirm(`¿Eliminar la categoría "${cat.name}"?`)) return;
             }
             
-            appData.categories.splice(index, 1);
-            saveData();
-            renderCategorySelect();
-            renderCategoryFilters();
-            renderItems();
-            manageCategories();
-            showToast('Categoría eliminada');
+            const removed = appData.categories.splice(index, 1);
+            const ok = await saveToGitHub(`Delete category: ${cat.name}`);
+            if (ok) {
+                renderCategorySelect();
+                renderCategoryFilters();
+                renderItems();
+                manageCategories();
+                showToast('Categoría eliminada');
+            } else {
+                appData.categories.splice(index, 0, ...removed); // Revertir
+            }
         }
 
         function closeModal(id) {
@@ -1125,7 +1463,7 @@
             throw new Error('Conexión fallida');
         }
 
-        async function loadItemById(id, category) {
+        async function loadItemFromWowhead(id, category) {
             if (appData.items.find(item => item.id === id)) return { success: false, reason: 'duplicado' };
 
             try {
@@ -1149,7 +1487,6 @@
                     quality: qualityNode ? (qualityNode.getAttribute('id') || '1') : '1',
                     category: category
                 });
-                saveData();
                 return { success: true };
             } catch (e) {
                 return { success: false, reason: e.message };
@@ -1167,7 +1504,6 @@
             if (ids.length === 0) { showToast('No se encontraron IDs válidos', 'error'); return; }
 
             const cat = appData.categories.find(c => c.id === category);
-            showToast(`Cargando ${ids.length} items en ${cat.name}`);
             
             const loadBtn = document.getElementById('loadBtn');
             const progressBar = document.getElementById('progressBar');
@@ -1179,13 +1515,26 @@
             
             let success = 0, failed = 0, duplicates = 0;
             for (let i = 0; i < ids.length; i++) {
-                progressText.textContent = `${i + 1} / ${ids.length}`;
+                progressText.textContent = `Cargando ${i + 1} / ${ids.length}`;
                 progressFill.style.width = `${((i + 1) / ids.length) * 100}%`;
-                const result = await loadItemById(ids[i], category);
+                const result = await loadItemFromWowhead(ids[i], category);
                 if (result.success) { success++; renderItems(); renderCategoryFilters(); }
                 else if (result.reason === 'duplicado') duplicates++;
                 else failed++;
                 await new Promise(r => setTimeout(r, 300));
+            }
+
+            // Guardar todo en GitHub al final
+            if (success > 0) {
+                const ok = await saveToGitHub(`Add ${success} items to ${cat.name}`);
+                if (!ok) {
+                    // Si falla el guardado, revertir
+                    showToast('Error al guardar en GitHub', 'error');
+                    await syncFromGitHub();
+                    loadBtn.disabled = false;
+                    progressBar.classList.remove('show');
+                    return;
+                }
             }
 
             loadBtn.disabled = false;
@@ -1250,31 +1599,43 @@
                         <button class="btn-mini" onclick="downloadIcon('${item.icon}','${safeName}')">Descargar</button>
                         <button class="btn-mini" onclick="copyHtml('${item.icon}','${safeName}')">Copiar HTML</button>
                         <button class="btn-mini" onclick="window.open('https://es.wowhead.com/item=${item.id}','_blank')">Wowhead</button>
-                        <button class="btn-mini" onclick="openChangeCategoryModal(${realIndex})">Mover</button>
-                        <button class="btn-mini btn-mini-danger" onclick="removeItem(${realIndex})">Eliminar item</button>
+                        <button class="btn-mini editor-only" onclick="openChangeCategoryModal(${realIndex})">Mover</button>
+                        <button class="btn-mini btn-mini-danger editor-only" onclick="removeItem(${realIndex})">Eliminar item</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function removeItem(index) {
-            if (!confirm(`¿Eliminar "${appData.items[index].name}"?`)) return;
-            appData.items.splice(index, 1);
-            saveData();
-            renderItems();
-            renderCategoryFilters();
-            showToast('Item eliminado');
+        async function removeItem(index) {
+            const item = appData.items[index];
+            if (!confirm(`¿Eliminar "${item.name}"?`)) return;
+            
+            const removed = appData.items.splice(index, 1);
+            const ok = await saveToGitHub(`Remove item: ${item.name}`);
+            if (ok) {
+                renderItems();
+                renderCategoryFilters();
+                showToast('Item eliminado');
+            } else {
+                appData.items.splice(index, 0, ...removed); // Revertir
+            }
         }
 
-        function clearAll() {
+        async function clearAll() {
             if (appData.items.length === 0) return;
             if (!confirm(`¿Eliminar los ${appData.items.length} items del compendio?`)) return;
+            
+            const backup = [...appData.items];
             appData.items = [];
-            saveData();
-            renderItems();
-            renderCategoryFilters();
-            showToast('Compendio vaciado');
+            const ok = await saveToGitHub('Clear all items');
+            if (ok) {
+                renderItems();
+                renderCategoryFilters();
+                showToast('Compendio vaciado');
+            } else {
+                appData.items = backup; // Revertir
+            }
         }
 
         function exportData() {
@@ -1288,22 +1649,28 @@
             showToast('Compendio exportado');
         }
 
-        function importData(event) {
+        async function importData(event) {
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = async function(e) {
                 try {
                     const imported = JSON.parse(e.target.result);
                     if (!imported.categories || !imported.items) throw new Error('Formato inválido');
-                    if (confirm(`¿Importar ${imported.items.length} items y ${imported.categories.length} categorías?`)) {
-                        imported.categories.forEach(cat => { if (!appData.categories.find(c => c.id === cat.id)) appData.categories.push(cat); });
-                        imported.items.forEach(item => { if (!appData.items.find(i => i.id === item.id)) appData.items.push(item); });
-                        saveData();
+                    if (!confirm(`¿Importar ${imported.items.length} items y ${imported.categories.length} categorías?`)) return;
+                    
+                    const backup = JSON.parse(JSON.stringify(appData));
+                    imported.categories.forEach(cat => { if (!appData.categories.find(c => c.id === cat.id)) appData.categories.push(cat); });
+                    imported.items.forEach(item => { if (!appData.items.find(i => i.id === item.id)) appData.items.push(item); });
+                    
+                    const ok = await saveToGitHub('Import data');
+                    if (ok) {
                         renderCategorySelect();
                         renderCategoryFilters();
                         renderItems();
                         showToast('Importación completada');
+                    } else {
+                        appData = backup;
                     }
                 } catch (e) { showToast('Archivo inválido', 'error'); }
             };
@@ -1363,6 +1730,9 @@
             copyText(`<img src="${getIconUrl(iconName)}" alt="${itemName}" width="56" height="56">`);
         }
 
+        // ============================================
+        // EVENTOS
+        // ============================================
         document.getElementById('itemIdInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') addItemsByIds();
         });
@@ -1377,10 +1747,40 @@
             if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
         });
 
-        loadData();
-        renderCategorySelect();
-        renderCategoryFilters();
-        renderItems();
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        async function init() {
+            const token = getToken();
+            if (token) {
+                // Verificar token
+                try {
+                    const response = await fetch(API_URL, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (response.ok) {
+                        isAuthenticated = true;
+                        const data = await response.json();
+                        fileSha = data.sha;
+                    }
+                } catch (e) {
+                    console.error('Error verificando token guardado:', e);
+                }
+            }
+
+            updateAuthUI();
+            
+            // Cargar datos desde GitHub
+            showSync('Cargando datos...');
+            await loadFromGitHub();
+            hideSync();
+            
+            renderCategorySelect();
+            renderCategoryFilters();
+            renderItems();
+        }
+
+        init();
     </script>
 </body>
 </html>
