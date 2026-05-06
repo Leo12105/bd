@@ -48,13 +48,6 @@
       "icon": "inv_misc_idol_01",
       "quality": "4",
       "category": "tcg"
-    },
-    {
-      "id": 22498,
-      "name": "Frostfire Circlet",
-      "icon": "inv_crown_01",
-      "quality": "4",
-      "category": "tcg"
     }
   ]
 }
