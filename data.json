@@ -43,10 +43,10 @@
   ],
   "items": [
     {
-      "id": 21308,
-      "name": "Jingling Bell",
-      "icon": "inv_misc_bell_01",
-      "quality": "2",
+      "id": 49704,
+      "name": "Carved Ogre Idol",
+      "icon": "inv_misc_idol_01",
+      "quality": "4",
       "category": "tcg"
     }
   ]
