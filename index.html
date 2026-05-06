@@ -3,439 +3,549 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki AfterWoW - Colección de Iconos</title>
+    <title>After WoW — Wiki de Iconos</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #1f1f1f;
+            --border-subtle: #2a2a2a;
+            --border-medium: #3a3a3a;
+            --gold: #c9a961;
+            --gold-bright: #f0d27a;
+            --gold-dim: #8a7340;
+            --text-primary: #e8e6e3;
+            --text-secondary: #a8a8a8;
+            --text-muted: #6a6a6a;
+            --frost: #4a90b8;
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background-color: #0a1620;
-            background-image: 
-                radial-gradient(ellipse at top, rgba(0, 100, 180, 0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at bottom, rgba(100, 180, 255, 0.08) 0%, transparent 60%);
-            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
+            line-height: 1.6;
         }
 
-        /* ======= HEADER CON NIEVE ANIMADA ======= */
-        header {
+        /* ========================================
+           HERO SECTION - PANTALLA COMPLETA
+           ======================================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
             background: 
-                radial-gradient(ellipse at center, rgba(78, 195, 255, 0.2) 0%, transparent 70%),
-                linear-gradient(135deg, #051020 0%, #0a2540 25%, #143055 50%, #0a2540 75%, #051020 100%);
-            border-bottom: 3px solid #4ec3ff;
-            padding: 40px 0;
+                linear-gradient(180deg, 
+                    rgba(10, 10, 10, 0.4) 0%, 
+                    rgba(10, 10, 10, 0.6) 60%, 
+                    rgba(10, 10, 10, 1) 100%),
+                url('img/lichking.jpg') center center / cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 100, 200, 0.4);
             overflow: hidden;
         }
 
-        /* Capa 1 de nieve (lenta y grande) */
-        header::before {
-            content: '❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆  ❄  ❅  ❆';
+        .hero::before {
+            content: '';
             position: absolute;
-            top: -100%;
-            left: 0;
-            right: 0;
-            bottom: -100%;
-            color: rgba(168, 224, 255, 0.4);
-            font-size: 1.8em;
-            letter-spacing: 60px;
-            line-height: 80px;
-            overflow: hidden;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%);
             pointer-events: none;
-            animation: snowfall1 15s linear infinite;
-            text-align: center;
-            white-space: pre-wrap;
         }
 
-        /* Capa 2 de nieve (rápida y pequeña) */
-        header::after {
-            content: '·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅  ·  ❄  ·  ❅';
-            position: absolute;
-            top: -100%;
-            left: 0;
-            right: 0;
-            bottom: -100%;
-            color: rgba(200, 240, 255, 0.6);
-            font-size: 1em;
-            letter-spacing: 30px;
-            line-height: 50px;
-            overflow: hidden;
-            pointer-events: none;
-            animation: snowfall2 8s linear infinite;
-            text-align: center;
-            white-space: pre-wrap;
-        }
-
-        @keyframes snowfall1 {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50%); }
-        }
-
-        @keyframes snowfall2 {
-            0% { transform: translateY(0) translateX(-10px); }
-            100% { transform: translateY(50%) translateX(10px); }
-        }
-
-        .header-content {
+        .hero-content {
             position: relative;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
+            padding: 0 20px;
+            max-width: 900px;
+            animation: fadeInUp 1.5s ease-out;
         }
 
-        .lich-king-logo {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 3px solid #4ec3ff;
-            background: 
-                radial-gradient(circle at 30% 30%, #a8e0ff, #4ec3ff 40%, #1a4570 100%);
-            box-shadow: 
-                0 0 25px rgba(78, 195, 255, 0.6),
-                inset 0 0 20px rgba(168, 224, 255, 0.4);
-            flex-shrink: 0;
-            animation: frostGlow 3s ease-in-out infinite;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-overline {
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            margin-bottom: 24px;
+            text-shadow: 
+                0 2px 20px rgba(0,0,0,0.8),
+                0 0 60px rgba(201, 169, 97, 0.3);
+        }
+
+        .hero-title .accent {
+            background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Separador ornamental dorado */
+        .ornament {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3em;
+            margin: 24px auto;
+            max-width: 400px;
+        }
+        .ornament .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+        }
+        .ornament .symbol {
+            margin: 0 16px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 48px;
+            background: transparent;
+            color: var(--gold-bright);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
             position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
-        .lich-king-logo::before {
-            content: '👑';
-            filter: drop-shadow(0 0 10px rgba(168, 224, 255, 0.9));
-            animation: crownFloat 4s ease-in-out infinite;
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
         }
 
-        @keyframes frostGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 25px rgba(78, 195, 255, 0.6),
-                    inset 0 0 20px rgba(168, 224, 255, 0.4);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 45px rgba(120, 220, 255, 0.9),
-                    inset 0 0 30px rgba(200, 240, 255, 0.6);
-            }
+        .hero-cta:hover {
+            background: rgba(201, 169, 97, 0.1);
+            border-color: var(--gold-bright);
+            color: #fff;
+            box-shadow: 
+                0 0 30px rgba(201, 169, 97, 0.4),
+                inset 0 0 20px rgba(201, 169, 97, 0.1);
         }
 
-        @keyframes crownFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(2deg); }
+        .hero-cta:hover::before {
+            transform: translateX(100%);
         }
 
-        .header-text {
-            text-align: left;
+        /* Indicador de scroll */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        .scroll-indicator::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+            margin: 12px auto 0;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
         }
 
-        header h1 {
-            font-size: 2.5em;
-            color: #4ec3ff;
-            text-shadow: 
-                0 0 20px rgba(78, 195, 255, 0.8),
-                0 0 40px rgba(78, 195, 255, 0.4),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
-            margin-bottom: 5px;
-            font-weight: bold;
-            letter-spacing: 1px;
+        /* ========================================
+           NAVEGACIÓN STICKY
+           ======================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
         }
-        header h1 span { 
-            color: #a8e0ff; 
-            text-shadow: 
-                0 0 15px rgba(168, 224, 255, 0.9),
-                2px 2px 4px rgba(0, 0, 0, 0.9);
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header p { 
-            color: #b0d4f0; 
-            font-size: 0.95em;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-            font-style: italic;
+        .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .navbar-brand .divider {
+            color: var(--text-muted);
+            margin: 0 12px;
+            font-weight: 300;
+        }
+        .navbar-brand .label {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.85rem;
         }
 
+        /* ========================================
+           CONTENIDO PRINCIPAL
+           ======================================== */
         .main-container {
             max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 60px 32px;
         }
 
-        .info-box {
-            padding: 15px 20px;
-            background: linear-gradient(135deg, rgba(15, 35, 60, 0.9), rgba(25, 50, 85, 0.9));
-            border: 1px solid #4ec3ff;
-            border-radius: 10px;
-            color: #c8e0f5;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.15);
+        .section-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
         }
-        .info-box code {
-            background: #051020;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #4ec3ff;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            border: 1px solid #1a3a5c;
+        .section-overline {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
-
-        .add-section {
-            padding: 20px;
-            background: linear-gradient(145deg, #0f2540, #143055);
-            border-radius: 12px;
-            border: 2px solid #1a4570;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 50, 100, 0.3);
-        }
-        .add-section h3 {
-            color: #4ec3ff;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            text-shadow: 0 0 10px rgba(78, 195, 255, 0.5);
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
         }
 
-        .category-selector {
+        /* ========================================
+           PANEL DE AÑADIR ITEMS
+           ======================================== */
+        .panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 32px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        .panel::before, .panel::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--gold);
+        }
+        .panel::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .panel::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        .panel-row {
             display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
+            gap: 12px;
             align-items: center;
-        }
-        .category-selector label {
-            color: #a8e0ff;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-        .category-selector select {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px;
-            background: #051020;
-            border: 2px solid #4ec3ff;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        .category-selector select:focus {
-            outline: none;
-            border-color: #a8e0ff;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.4);
-        }
-        .btn-new-cat {
-            padding: 12px 18px;
-            background: linear-gradient(135deg, #1a5490, #2a7ab8);
-            color: white;
-            border: 1px solid #4ec3ff;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-        .btn-new-cat:hover { 
-            background: linear-gradient(135deg, #2a7ab8, #4ec3ff);
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.5);
+            margin-bottom: 16px;
+            flex-wrap: wrap;
         }
 
-        .input-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        .input-row input {
-            flex: 1;
-            padding: 14px;
-            background: #051020;
-            border: 1px solid #1a4570;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1em;
-        }
-        .input-row input:focus {
-            outline: none;
-            border-color: #4ec3ff;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.3);
-        }
-        .input-row button {
-            padding: 14px 25px;
-            background: linear-gradient(135deg, #4ec3ff, #2a7ab8);
-            color: #fff;
-            border: 1px solid #a8e0ff;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1em;
+        .panel-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
             white-space: nowrap;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        .input-row button:hover { 
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(78, 195, 255, 0.6);
+
+        .input-field, .select-field {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
         }
-        .input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .input-field:focus, .select-field:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 1px var(--gold-dim);
+        }
+        .input-field { flex: 1; min-width: 250px; }
+        .select-field { flex: 1; min-width: 200px; cursor: pointer; }
+
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            border-color: var(--gold);
+            color: var(--gold-bright);
+        }
+        .btn-primary:hover {
+            background: var(--gold);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
+        }
+        .btn-primary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            border-color: var(--border-medium);
+            color: var(--text-secondary);
+        }
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold-bright);
+        }
+
+        .btn-danger {
+            border-color: #5a2020;
+            color: #c84545;
+        }
+        .btn-danger:hover {
+            background: rgba(200, 69, 69, 0.1);
+            border-color: #c84545;
+        }
 
         .toolbar {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding-top: 12px;
-            border-top: 1px solid #1a4570;
-            margin-top: 12px;
-        }
-        .tool-btn {
-            padding: 8px 14px;
-            background: #0a2540;
-            border: 1px solid #1a4570;
-            border-radius: 6px;
-            color: #a8e0ff;
-            cursor: pointer;
-            font-size: 0.85em;
-        }
-        .tool-btn:hover {
-            border-color: #4ec3ff;
-            color: #4ec3ff;
-            box-shadow: 0 0 10px rgba(78, 195, 255, 0.3);
-        }
-        .tool-btn.danger {
-            border-color: #ff3030;
-            color: #ff6060;
-        }
-        .tool-btn.danger:hover { 
-            background: #4a1a1a;
-            box-shadow: 0 0 10px rgba(255, 48, 48, 0.4);
-        }
-        .tool-btn.success {
-            border-color: #4ec3ff;
-            color: #4ec3ff;
-        }
-
-        /* ======= FILTROS DE CATEGORÍAS ======= */
-        .category-filters {
-            display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: linear-gradient(145deg, #0f2540, #143055);
-            border-radius: 10px;
-            border: 1px solid #1a4570;
-        }
-        .cat-filter {
-            padding: 8px 16px;
-            background: #051020;
-            border: 1px solid #1a4570;
-            border-radius: 20px;
-            color: #a8e0ff;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .cat-filter:hover {
-            border-color: #4ec3ff;
-            color: #4ec3ff;
-            box-shadow: 0 0 10px rgba(78, 195, 255, 0.3);
-        }
-        .cat-filter.active {
-            background: linear-gradient(135deg, #4ec3ff, #2a7ab8);
-            color: #fff;
-            border-color: #a8e0ff;
-            font-weight: bold;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.5);
-        }
-        .cat-filter .count {
-            background: rgba(0,0,0,0.3);
-            padding: 1px 8px;
-            border-radius: 10px;
-            font-size: 0.75em;
-        }
-        .cat-filter.active .count {
-            background: rgba(0,0,0,0.4);
+            padding-top: 16px;
+            margin-top: 16px;
+            border-top: 1px solid var(--border-subtle);
         }
 
-        /* ======= ITEMS GRID ======= */
+        .progress-bar {
+            display: none;
+            margin: 16px 0 0 0;
+        }
+        .progress-bar.show { display: block; }
+        .progress-track {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
+            height: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-bright));
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+            box-shadow: 0 0 10px rgba(201, 169, 97, 0.5);
+        }
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            letter-spacing: 0.1em;
+        }
+
+        /* ========================================
+           FILTROS - TABS ESTILO BLIZZARD
+           ======================================== */
+        .filters-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 0;
+            margin-bottom: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .filter-tab {
+            padding: 16px 24px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: none;
+            border-right: 1px solid var(--border-subtle);
+            border-bottom: 2px solid transparent;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .filter-tab:hover {
+            color: var(--gold-bright);
+            background: rgba(201, 169, 97, 0.05);
+        }
+        .filter-tab.active {
+            color: var(--gold-bright);
+            border-bottom-color: var(--gold);
+            background: rgba(201, 169, 97, 0.08);
+        }
+        .filter-tab .count {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .filter-tab.active .count {
+            border-color: var(--gold-dim);
+            color: var(--gold-bright);
+        }
+
+        /* ========================================
+           GRID DE ITEMS
+           ======================================== */
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .item-card {
-            background: linear-gradient(145deg, #0f2540, #143055);
-            border: 1px solid #1a4570;
-            border-radius: 12px;
-            padding: 16px;
-            transition: all 0.3s;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 20px;
+            transition: all 0.3s ease;
             position: relative;
         }
         .item-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(78, 195, 255, 0.3);
-            border-color: #4ec3ff;
+            background: var(--bg-card-hover);
+            border-color: var(--border-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
-        .item-card.poor { border-left: 4px solid #9d9d9d; }
-        .item-card.common { border-left: 4px solid #ffffff; }
-        .item-card.uncommon { border-left: 4px solid #1eff00; }
-        .item-card.rare { border-left: 4px solid #0070dd; }
-        .item-card.epic { border-left: 4px solid #a335ee; }
-        .item-card.legendary { border-left: 4px solid #ff8000; }
-        .item-card.artifact { border-left: 4px solid #e6cc80; }
-        .item-card.heirloom { border-left: 4px solid #00ccff; }
+        
+        /* Indicador de calidad - línea izquierda */
+        .item-card.poor { border-left: 2px solid #9d9d9d; }
+        .item-card.common { border-left: 2px solid #ffffff; }
+        .item-card.uncommon { border-left: 2px solid #1eff00; }
+        .item-card.rare { border-left: 2px solid #0070dd; }
+        .item-card.epic { border-left: 2px solid #a335ee; }
+        .item-card.legendary { border-left: 2px solid #ff8000; }
+        .item-card.artifact { border-left: 2px solid #e6cc80; }
+        .item-card.heirloom { border-left: 2px solid #00ccff; }
 
         .item-category-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: linear-gradient(135deg, rgba(78, 195, 255, 0.9), rgba(42, 122, 184, 0.9));
-            color: white;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--border-medium);
+            color: var(--text-secondary);
             padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.7em;
-            font-weight: bold;
-            box-shadow: 0 0 8px rgba(78, 195, 255, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
         }
 
         .item-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-            margin-top: 18px;
+            gap: 14px;
+            margin-bottom: 16px;
+            padding-right: 90px;
         }
-        .icon-wrapper { width: 56px; height: 56px; flex-shrink: 0; }
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+        }
         .icon-wrapper img {
             width: 56px;
             height: 56px;
-            border-radius: 8px;
-            border: 2px solid #555;
             background: #000;
             cursor: pointer;
+            border: 1px solid var(--border-medium);
+            transition: border-color 0.3s ease;
         }
-        .item-card.poor img { border-color: #9d9d9d; }
-        .item-card.common img { border-color: #ffffff; }
-        .item-card.uncommon img { border-color: #1eff00; }
-        .item-card.rare img { border-color: #0070dd; }
-        .item-card.epic img { border-color: #a335ee; }
-        .item-card.legendary img { border-color: #ff8000; }
-        .item-card.artifact img { border-color: #e6cc80; }
-        .item-card.heirloom img { border-color: #00ccff; }
+        .item-card:hover .icon-wrapper img {
+            border-color: var(--gold);
+        }
+        
+        /* Bordes de iconos según calidad */
+        .item-card.poor .icon-wrapper img { border-color: #9d9d9d; }
+        .item-card.common .icon-wrapper img { border-color: #555; }
+        .item-card.uncommon .icon-wrapper img { border-color: #1eff00; }
+        .item-card.rare .icon-wrapper img { border-color: #0070dd; }
+        .item-card.epic .icon-wrapper img { border-color: #a335ee; }
+        .item-card.legendary .icon-wrapper img { border-color: #ff8000; }
+        .item-card.artifact .icon-wrapper img { border-color: #e6cc80; }
+        .item-card.heirloom .icon-wrapper img { border-color: #00ccff; }
 
         .item-info { flex: 1; min-width: 0; }
         .item-name {
-            font-size: 0.95em;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 600;
             line-height: 1.3;
             word-wrap: break-word;
+            margin-bottom: 4px;
         }
         .item-name.poor { color: #9d9d9d; }
         .item-name.common { color: #ffffff; }
@@ -446,236 +556,276 @@
         .item-name.artifact { color: #e6cc80; }
         .item-name.heirloom { color: #00ccff; }
 
-        .item-id {
-            font-size: 0.7em;
-            color: #6a8db0;
-            margin-top: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        .item-icon-name {
-            font-size: 0.65em;
-            color: #4a6d80;
-            margin-top: 2px;
-            font-family: 'Courier New', monospace;
-            word-break: break-all;
+        .item-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'Consolas', 'Monaco', monospace;
+            letter-spacing: 0.05em;
         }
 
         .item-actions {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            margin-top: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-subtle);
         }
-        .btn-action {
-            padding: 7px 8px;
-            border: none;
-            border-radius: 6px;
+        .btn-mini {
+            padding: 8px 10px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
             cursor: pointer;
-            font-size: 0.75em;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
             font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
-        .btn-action:hover { opacity: 0.85; }
-        .btn-copy-url { background: #0070dd; color: white; }
-        .btn-copy-icon { background: #a335ee; color: white; }
-        .btn-download { background: #1eff00; color: #000; }
-        .btn-copy-html { background: #ff8000; color: #000; }
-        .btn-wowhead { background: #444; color: #fff; }
-        .btn-change-cat { background: #4ec3ff; color: #fff; }
-        .btn-remove { background: #ff3030; color: white; grid-column: span 2; }
+        .btn-mini:hover {
+            border-color: var(--gold);
+            color: var(--gold-bright);
+            background: rgba(201, 169, 97, 0.05);
+        }
+        .btn-mini.btn-mini-danger {
+            grid-column: span 2;
+        }
+        .btn-mini.btn-mini-danger:hover {
+            border-color: #c84545;
+            color: #c84545;
+            background: rgba(200, 69, 69, 0.05);
+        }
 
-        /* ======= MODAL ======= */
+        /* ========================================
+           MODAL
+           ======================================== */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 10, 20, 0.92);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
         .modal-overlay.show { display: flex; }
+        
         .modal {
-            background: linear-gradient(145deg, #0f2540, #143055);
-            border: 2px solid #4ec3ff;
-            border-radius: 15px;
-            padding: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-dim);
+            padding: 36px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 0 40px rgba(78, 195, 255, 0.4);
+            position: relative;
+            box-shadow: 0 0 60px rgba(201, 169, 97, 0.15);
         }
+        .modal::before, .modal::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--gold);
+        }
+        .modal::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .modal::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
         .modal h2 {
-            color: #4ec3ff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(78, 195, 255, 0.5);
+            color: var(--gold-bright);
+            margin-bottom: 24px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
         }
         .modal label {
             display: block;
-            color: #a8e0ff;
+            color: var(--text-secondary);
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 16px;
         }
+        .modal label:first-child { margin-top: 0; }
         .modal input, .modal select {
             width: 100%;
             padding: 12px;
-            background: #051020;
-            border: 1px solid #1a4570;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1em;
-            margin-bottom: 15px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
         }
         .modal input:focus, .modal select:focus {
-            outline: none;
-            border-color: #4ec3ff;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.3);
+            border-color: var(--gold);
         }
         .modal-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: flex-end;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
         }
-        .modal-buttons button {
-            padding: 12px 22px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-save { 
-            background: linear-gradient(135deg, #4ec3ff, #2a7ab8);
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        .btn-cancel { background: #1a3a5c; color: #fff; }
 
-        /* ======= EMOJI PICKER ======= */
         .emoji-row {
             display: flex;
-            gap: 5px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-top: 8px;
         }
         .emoji-btn {
             padding: 8px 12px;
-            background: #051020;
-            border: 1px solid #1a4570;
-            border-radius: 6px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-medium);
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
         }
-        .emoji-btn:hover { border-color: #4ec3ff; }
-        .emoji-btn.selected { 
-            border-color: #4ec3ff; 
-            background: #1a3a5c;
-            box-shadow: 0 0 10px rgba(78, 195, 255, 0.5);
+        .emoji-btn:hover { border-color: var(--gold); }
+        .emoji-btn.selected {
+            border-color: var(--gold);
+            background: rgba(201, 169, 97, 0.1);
         }
 
-        /* ======= TOAST ======= */
+        /* ========================================
+           TOAST
+           ======================================== */
         .toast {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(150px);
-            background: linear-gradient(135deg, #4ec3ff, #2a7ab8);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-weight: bold;
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            color: var(--text-primary);
+            padding: 14px 24px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
             z-index: 9999;
             transition: transform 0.4s ease;
             max-width: 90%;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(78, 195, 255, 0.5);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
         .toast.show { transform: translateX(-50%) translateY(0); }
-        .toast.error { background: linear-gradient(135deg, #ff3030, #cc0000); }
-        .toast.warning { background: linear-gradient(135deg, #ff8000, #cc6600); }
+        .toast.error { border-color: #c84545; color: #ff8080; }
+        .toast.warning { border-color: #c89045; color: #ffb060; }
 
-        .progress-bar {
-            display: none;
-            margin: 15px 0;
-        }
-        .progress-bar.show { display: block; }
-        .progress-track {
-            background: #051020;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 28px;
-            position: relative;
-            border: 1px solid #1a4570;
-        }
-        .progress-fill {
-            background: linear-gradient(90deg, #4ec3ff, #a8e0ff);
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s;
-            box-shadow: 0 0 15px rgba(78, 195, 255, 0.6);
-        }
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-weight: bold;
-            font-size: 0.9em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
+        /* ========================================
+           ESTADO VACÍO
+           ======================================== */
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
-            color: #4a6d80;
+            padding: 80px 20px;
+            color: var(--text-muted);
+            border: 1px dashed var(--border-medium);
         }
-        .empty-state .emoji { font-size: 4em; margin-bottom: 15px; opacity: 0.5; }
-        .empty-state h3 { color: #6a8db0; margin-bottom: 10px; }
+        .empty-state .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.4;
+        }
+        .empty-state h3 {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .empty-state p {
+            font-size: 0.9rem;
+        }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.5em; }
-            .lich-king-logo { width: 70px; height: 70px; font-size: 2.2em; }
-            .header-content { flex-direction: column; gap: 15px; }
-            .header-text { text-align: center; }
-            .input-row { flex-direction: column; }
-            .category-selector { flex-direction: column; align-items: stretch; }
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 32px 20px;
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        footer .gold { color: var(--gold); }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .hero { min-height: 500px; }
+            .navbar-content { padding: 0 20px; }
+            .navbar-brand { font-size: 0.9rem; }
+            .main-container { padding: 40px 20px; }
+            .panel { padding: 20px; }
             .items-grid { grid-template-columns: 1fr; }
+            .filters-panel { flex-direction: column; }
+            .filter-tab { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+            .filter-tab.active { border-bottom-color: var(--gold); }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <div class="lich-king-logo"></div>
-            <div class="header-text">
-                <h1>❄️ Wiki <span>AfterWoW</span> ❄️</h1>
-                <p>"En el día más cruel, en la hora más sombría... la colección de iconos del servidor"</p>
+    <!-- ========== HERO PANTALLA COMPLETA ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-overline">Reino de Azeroth · Wrath of the Lich King</div>
+            <h1 class="hero-title">After <span class="accent">WoW</span></h1>
+            <div class="ornament">
+                <div class="line"></div>
+                <div class="symbol">◆ ◆ ◆</div>
+                <div class="line"></div>
+            </div>
+            <p class="hero-subtitle">
+                Compendio oficial de iconos y objetos del servidor.<br>
+                Una herramienta forjada para los maestros del reino.
+            </p>
+            <a href="#wiki" class="hero-cta">Acceder al Compendio</a>
+        </div>
+        <div class="scroll-indicator">Desplázate</div>
+    </section>
+
+    <!-- ========== NAVEGACIÓN ========== -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-brand">
+                After WoW <span class="divider">|</span> <span class="label">Wiki de Iconos</span>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="main-container">
-
-        <div class="info-box">
-            ❄️ <strong>Acepta:</strong> URLs <code>https://www.wowhead.com/item=46780</code> o IDs sueltos <code>46780</code> | Los items se guardan automáticamente
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <main class="main-container" id="wiki">
+        
+        <div class="section-header">
+            <div class="section-overline">Gestión de objetos</div>
+            <h2 class="section-title">Añadir Items al Compendio</h2>
         </div>
 
-        <div class="add-section">
-            <h3>➕ Añadir nuevos items</h3>
-            
-            <div class="category-selector">
-                <label>📂 Categoría:</label>
-                <select id="categorySelect"></select>
-                <button class="btn-new-cat" onclick="openNewCategoryModal()">+ Nueva categoría</button>
+        <div class="panel">
+            <div class="panel-row">
+                <span class="panel-label">Categoría</span>
+                <select id="categorySelect" class="select-field"></select>
+                <button class="btn btn-secondary" onclick="openNewCategoryModal()">+ Nueva</button>
             </div>
 
-            <div class="input-row">
-                <input type="text" id="itemIdInput" placeholder="Pega URL o ID: 46780, https://www.wowhead.com/item=32757..." autocomplete="off">
-                <button id="loadBtn" onclick="addItemsByIds()">💾 Guardar</button>
+            <div class="panel-row">
+                <input type="text" id="itemIdInput" class="input-field" 
+                    placeholder="URL de Wowhead o ID del item (ej: 46780, https://www.wowhead.com/item=32757)" 
+                    autocomplete="off">
+                <button id="loadBtn" class="btn btn-primary" onclick="addItemsByIds()">Guardar</button>
             </div>
 
             <div class="progress-bar" id="progressBar">
@@ -686,60 +836,69 @@
             </div>
 
             <div class="toolbar">
-                <button class="tool-btn success" onclick="exportData()">📤 Exportar mi colección</button>
-                <button class="tool-btn success" onclick="document.getElementById('importFile').click()">📥 Importar colección</button>
+                <button class="btn btn-secondary" onclick="exportData()">Exportar</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-                <button class="tool-btn" onclick="manageCategories()">⚙️ Gestionar categorías</button>
-                <button class="tool-btn danger" onclick="clearAll()">🗑️ Limpiar todo</button>
+                <button class="btn btn-secondary" onclick="manageCategories()">Gestionar Categorías</button>
+                <button class="btn btn-danger" onclick="clearAll()">Vaciar Compendio</button>
             </div>
         </div>
 
-        <div class="category-filters" id="categoryFilters"></div>
+        <div class="section-header">
+            <div class="section-overline">Filtros</div>
+            <h2 class="section-title">Categorías del Compendio</h2>
+        </div>
+
+        <div class="filters-panel" id="categoryFilters"></div>
 
         <div class="items-grid" id="itemsGrid"></div>
         
         <div id="emptyState" class="empty-state">
-            <div class="emoji">❄️</div>
-            <h3>Aún no hay items en esta categoría</h3>
-            <p>Selecciona una categoría arriba y pega URLs o IDs de Wowhead</p>
+            <div class="icon">⊘</div>
+            <h3>El compendio está vacío</h3>
+            <p>Añade tu primer item utilizando el panel superior</p>
         </div>
-    </div>
+    </main>
 
-    <!-- MODAL: Nueva Categoría -->
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div><span class="gold">After WoW</span> · Wiki de Iconos del Reino</div>
+        <div style="margin-top:8px; font-size:0.75rem; opacity:0.6;">Forjado en las profundidades de Azeroth</div>
+    </footer>
+
+    <!-- ========== MODALES ========== -->
     <div class="modal-overlay" id="newCategoryModal">
         <div class="modal">
-            <h2>📂 Nueva categoría</h2>
-            <label>Nombre de la categoría:</label>
-            <input type="text" id="newCatName" placeholder="Ej: Armas Legendarias, Pets favoritos...">
-            <label>Emoji (selecciona uno):</label>
+            <h2>Nueva Categoría</h2>
+            <label>Nombre</label>
+            <input type="text" id="newCatName" placeholder="Ej: Armas Legendarias">
+            <label>Símbolo</label>
             <div class="emoji-row" id="emojiPicker"></div>
             <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal('newCategoryModal')">Cancelar</button>
-                <button class="btn-save" onclick="saveNewCategory()">💾 Crear</button>
+                <button class="btn btn-secondary" onclick="closeModal('newCategoryModal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveNewCategory()">Crear</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL: Cambiar Categoría -->
     <div class="modal-overlay" id="changeCategoryModal">
         <div class="modal">
-            <h2>📂 Cambiar categoría</h2>
-            <label>Nueva categoría para este item:</label>
+            <h2>Cambiar Categoría</h2>
+            <label>Nueva categoría para este item</label>
             <select id="changeCatSelect"></select>
             <div class="modal-buttons">
-                <button class="btn-cancel" onclick="closeModal('changeCategoryModal')">Cancelar</button>
-                <button class="btn-save" onclick="saveChangeCategory()">💾 Guardar</button>
+                <button class="btn btn-secondary" onclick="closeModal('changeCategoryModal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveChangeCategory()">Guardar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL: Gestionar Categorías -->
     <div class="modal-overlay" id="manageCategoriesModal">
         <div class="modal">
-            <h2>⚙️ Gestionar categorías</h2>
-            <div id="categoriesList" style="max-height:400px; overflow-y:auto;"></div>
-            <div class="modal-buttons" style="margin-top:20px;">
-                <button class="btn-cancel" onclick="closeModal('manageCategoriesModal')">Cerrar</button>
+            <h2>Gestionar Categorías</h2>
+            <div id="categoriesList" style="max-height:400px; overflow-y:auto; margin-top:8px;"></div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeModal('manageCategoriesModal')">Cerrar</button>
             </div>
         </div>
     </div>
@@ -747,17 +906,15 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // ============ CONFIGURACIÓN ============
         const CORS_PROXIES = [
             'https://corsproxy.io/?',
             'https://api.allorigins.win/raw?url=',
             'https://api.codetabs.com/v1/proxy?quest=',
         ];
 
-        const STORAGE_KEY = 'wowIconWiki_data';
+        const STORAGE_KEY = 'afterwow_wiki_data';
         const EMOJIS = ['📦', '🎴', '⚔️', '🛡️', '🧪', '🐉', '🐾', '✨', '👑', '💎', '🏹', '🪄', '🔮', '⚡', '🔥', '❄️', '🌟', '💀', '🦅', '🐅', '🐺', '🐲', '🎭', '🎁', '💍', '🗡️', '🏆', '⭐', '💰', '🌙'];
 
-        // ============ ESTADO ============
         let appData = {
             categories: [
                 { id: 'tcg', name: 'Juegos de Cartas', emoji: '🎴' },
@@ -777,14 +934,9 @@
         let selectedEmoji = '📦';
         let itemToChangeCategory = null;
 
-        // ============ PERSISTENCIA ============
         function saveData() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-            } catch (e) {
-                console.error('Error guardando:', e);
-                showToast('⚠️ Error guardando datos', 'error');
-            }
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); }
+            catch (e) { showToast('Error al guardar datos', 'error'); }
         }
 
         function loadData() {
@@ -792,16 +944,11 @@
                 const saved = localStorage.getItem(STORAGE_KEY);
                 if (saved) {
                     const parsed = JSON.parse(saved);
-                    if (parsed.categories && parsed.items) {
-                        appData = parsed;
-                    }
+                    if (parsed.categories && parsed.items) appData = parsed;
                 }
-            } catch (e) {
-                console.error('Error cargando:', e);
-            }
+            } catch (e) {}
         }
 
-        // ============ NOTIFICACIONES ============
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -809,14 +956,13 @@
             setTimeout(() => toast.classList.remove('show'), 3500);
         }
 
-        // ============ CATEGORÍAS ============
         function renderCategorySelect() {
             const select = document.getElementById('categorySelect');
             select.innerHTML = '';
             appData.categories.forEach(cat => {
                 const opt = document.createElement('option');
                 opt.value = cat.id;
-                opt.textContent = `${cat.emoji} ${cat.name}`;
+                opt.textContent = `${cat.emoji}  ${cat.name}`;
                 select.appendChild(opt);
             });
         }
@@ -826,9 +972,9 @@
             container.innerHTML = '';
 
             const allCount = appData.items.length;
-            const allBtn = document.createElement('div');
-            allBtn.className = 'cat-filter ' + (currentCategoryFilter === 'all' ? 'active' : '');
-            allBtn.innerHTML = `📦 Todos <span class="count">${allCount}</span>`;
+            const allBtn = document.createElement('button');
+            allBtn.className = 'filter-tab ' + (currentCategoryFilter === 'all' ? 'active' : '');
+            allBtn.innerHTML = `Todos <span class="count">${allCount}</span>`;
             allBtn.onclick = () => { currentCategoryFilter = 'all'; renderCategoryFilters(); renderItems(); };
             container.appendChild(allBtn);
 
@@ -836,15 +982,14 @@
                 const count = appData.items.filter(i => i.category === cat.id).length;
                 if (count === 0) return;
                 
-                const btn = document.createElement('div');
-                btn.className = 'cat-filter ' + (currentCategoryFilter === cat.id ? 'active' : '');
+                const btn = document.createElement('button');
+                btn.className = 'filter-tab ' + (currentCategoryFilter === cat.id ? 'active' : '');
                 btn.innerHTML = `${cat.emoji} ${cat.name} <span class="count">${count}</span>`;
                 btn.onclick = () => { currentCategoryFilter = cat.id; renderCategoryFilters(); renderItems(); };
                 container.appendChild(btn);
             });
         }
 
-        // ============ MODAL: NUEVA CATEGORÍA ============
         function openNewCategoryModal() {
             document.getElementById('newCatName').value = '';
             selectedEmoji = '📦';
@@ -859,33 +1004,24 @@
                 const btn = document.createElement('div');
                 btn.className = 'emoji-btn ' + (emoji === selectedEmoji ? 'selected' : '');
                 btn.textContent = emoji;
-                btn.onclick = () => {
-                    selectedEmoji = emoji;
-                    renderEmojiPicker();
-                };
+                btn.onclick = () => { selectedEmoji = emoji; renderEmojiPicker(); };
                 container.appendChild(btn);
             });
         }
 
         function saveNewCategory() {
             const name = document.getElementById('newCatName').value.trim();
-            if (!name) {
-                showToast('⚠️ Pon un nombre a la categoría', 'warning');
-                return;
-            }
+            if (!name) { showToast('Indica un nombre para la categoría', 'warning'); return; }
             
             const id = 'cat_' + Date.now();
             appData.categories.push({ id, name, emoji: selectedEmoji });
             saveData();
             renderCategorySelect();
-            
             document.getElementById('categorySelect').value = id;
-            
             closeModal('newCategoryModal');
-            showToast(`✅ Categoría "${selectedEmoji} ${name}" creada`);
+            showToast(`Categoría creada: ${name}`);
         }
 
-        // ============ MODAL: CAMBIAR CATEGORÍA ============
         function openChangeCategoryModal(itemIndex) {
             itemToChangeCategory = itemIndex;
             const select = document.getElementById('changeCatSelect');
@@ -893,7 +1029,7 @@
             appData.categories.forEach(cat => {
                 const opt = document.createElement('option');
                 opt.value = cat.id;
-                opt.textContent = `${cat.emoji} ${cat.name}`;
+                opt.textContent = `${cat.emoji}  ${cat.name}`;
                 select.appendChild(opt);
             });
             select.value = appData.items[itemIndex].category;
@@ -908,25 +1044,24 @@
                 renderCategoryFilters();
                 renderItems();
                 closeModal('changeCategoryModal');
-                showToast('✅ Categoría cambiada');
+                showToast('Categoría actualizada');
             }
         }
 
-        // ============ MODAL: GESTIONAR CATEGORÍAS ============
         function manageCategories() {
             const container = document.getElementById('categoriesList');
             container.innerHTML = '';
             appData.categories.forEach((cat, index) => {
                 const count = appData.items.filter(i => i.category === cat.id).length;
                 const div = document.createElement('div');
-                div.style.cssText = 'display:flex; align-items:center; gap:10px; padding:10px; border-bottom:1px solid #1a4570;';
+                div.style.cssText = 'display:flex; align-items:center; gap:14px; padding:14px; border-bottom:1px solid var(--border-subtle);';
                 div.innerHTML = `
                     <span style="font-size:1.5em;">${cat.emoji}</span>
                     <div style="flex:1;">
-                        <div style="color:#fff; font-weight:bold;">${cat.name}</div>
-                        <div style="color:#6a8db0; font-size:0.85em;">${count} items</div>
+                        <div style="color:var(--text-primary); font-weight:600; font-size:0.95rem;">${cat.name}</div>
+                        <div style="color:var(--text-muted); font-size:0.8rem; margin-top:2px;">${count} ${count === 1 ? 'item' : 'items'}</div>
                     </div>
-                    <button class="tool-btn danger" onclick="deleteCategory(${index})" style="padding:6px 12px;">🗑️</button>
+                    <button class="btn btn-danger" onclick="deleteCategory(${index})" style="padding:6px 14px; font-size:0.75rem;">Eliminar</button>
                 `;
                 container.appendChild(div);
             });
@@ -938,12 +1073,10 @@
             const count = appData.items.filter(i => i.category === cat.id).length;
             
             if (count > 0) {
-                if (!confirm(`La categoría "${cat.name}" tiene ${count} items. ¿Borrarla y mover los items a "Miscelánea"?`)) return;
-                appData.items.forEach(i => {
-                    if (i.category === cat.id) i.category = 'misc';
-                });
+                if (!confirm(`La categoría "${cat.name}" contiene ${count} items. ¿Eliminarla y mover los items a "Miscelánea"?`)) return;
+                appData.items.forEach(i => { if (i.category === cat.id) i.category = 'misc'; });
             } else {
-                if (!confirm(`¿Borrar la categoría "${cat.name}"?`)) return;
+                if (!confirm(`¿Eliminar la categoría "${cat.name}"?`)) return;
             }
             
             appData.categories.splice(index, 1);
@@ -952,125 +1085,89 @@
             renderCategoryFilters();
             renderItems();
             manageCategories();
-            showToast('🗑️ Categoría eliminada');
+            showToast('Categoría eliminada');
         }
 
         function closeModal(id) {
             document.getElementById(id).classList.remove('show');
         }
 
-        // ============ EXTRAER IDs ============
         function extractIds(text) {
             const ids = new Set();
             const parts = text.split(/[,\s\n]+/).filter(p => p.trim());
-            
             for (const part of parts) {
                 let match = part.match(/item[=\/](\d+)/i);
-                if (match) {
-                    ids.add(parseInt(match[1]));
-                    continue;
-                }
-                if (/^\d{1,7}$/.test(part)) {
-                    ids.add(parseInt(part));
-                }
+                if (match) { ids.add(parseInt(match[1])); continue; }
+                if (/^\d{1,7}$/.test(part)) ids.add(parseInt(part));
             }
-            
             return Array.from(ids);
         }
 
-        // ============ FETCH CON PROXY ============
         async function fetchWithProxy(url) {
             if (workingProxy) {
                 try {
-                    const response = await fetch(workingProxy + encodeURIComponent(url), { 
-                        signal: AbortSignal.timeout(15000) 
-                    });
+                    const response = await fetch(workingProxy + encodeURIComponent(url), { signal: AbortSignal.timeout(15000) });
                     if (response.ok) {
                         const text = await response.text();
                         if (text && text.length > 50) return text;
                     }
                 } catch (e) { workingProxy = null; }
             }
-
             for (const proxy of CORS_PROXIES) {
                 try {
-                    const response = await fetch(proxy + encodeURIComponent(url), { 
-                        signal: AbortSignal.timeout(15000) 
-                    });
+                    const response = await fetch(proxy + encodeURIComponent(url), { signal: AbortSignal.timeout(15000) });
                     if (response.ok) {
                         const text = await response.text();
-                        if (text && text.length > 50) {
-                            workingProxy = proxy;
-                            return text;
-                        }
+                        if (text && text.length > 50) { workingProxy = proxy; return text; }
                     }
                 } catch (e) { continue; }
             }
-            
-            throw new Error('Ningún proxy CORS funcionó');
+            throw new Error('Conexión fallida');
         }
 
-        // ============ CARGAR ITEM ============
         async function loadItemById(id, category) {
-            if (appData.items.find(item => item.id === id)) {
-                return { success: false, reason: 'duplicado' };
-            }
+            if (appData.items.find(item => item.id === id)) return { success: false, reason: 'duplicado' };
 
             try {
                 const xmlUrl = `https://www.wowhead.com/item=${id}&xml`;
                 const text = await fetchWithProxy(xmlUrl);
-                
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(text, 'text/xml');
-                
                 const itemNode = xml.querySelector('item');
-                if (!itemNode) throw new Error('No se encontró elemento <item>');
+                if (!itemNode) throw new Error('Item no encontrado');
 
                 const nameNode = itemNode.querySelector('name');
                 const iconNode = itemNode.querySelector('icon');
                 const qualityNode = itemNode.querySelector('quality');
                 
-                if (!iconNode || !iconNode.textContent) throw new Error('No se encontró el icono');
+                if (!iconNode || !iconNode.textContent) throw new Error('Sin icono');
 
-                const item = {
+                appData.items.push({
                     id: id,
                     name: nameNode ? nameNode.textContent.trim() : `Item #${id}`,
                     icon: iconNode.textContent.toLowerCase().trim(),
                     quality: qualityNode ? (qualityNode.getAttribute('id') || '1') : '1',
                     category: category
-                };
-                
-                appData.items.push(item);
+                });
                 saveData();
                 return { success: true };
             } catch (e) {
-                console.error(`Error item ${id}:`, e.message);
                 return { success: false, reason: e.message };
             }
         }
 
-        // ============ AÑADIR ITEMS ============
         async function addItemsByIds() {
             const input = document.getElementById('itemIdInput').value.trim();
             const category = document.getElementById('categorySelect').value;
             
-            if (!input) {
-                showToast('⚠️ Pega al menos un ID o URL', 'warning');
-                return;
-            }
-            if (!category) {
-                showToast('⚠️ Selecciona una categoría', 'warning');
-                return;
-            }
+            if (!input) { showToast('Introduce al menos un ID o URL', 'warning'); return; }
+            if (!category) { showToast('Selecciona una categoría', 'warning'); return; }
 
             const ids = extractIds(input);
-            if (ids.length === 0) {
-                showToast('⚠️ No se encontraron IDs válidos', 'error');
-                return;
-            }
+            if (ids.length === 0) { showToast('No se encontraron IDs válidos', 'error'); return; }
 
             const cat = appData.categories.find(c => c.id === category);
-            showToast(`🔍 Cargando ${ids.length} items en "${cat.emoji} ${cat.name}"`);
+            showToast(`Cargando ${ids.length} items en ${cat.name}`);
             
             const loadBtn = document.getElementById('loadBtn');
             const progressBar = document.getElementById('progressBar');
@@ -1081,38 +1178,26 @@
             progressBar.classList.add('show');
             
             let success = 0, failed = 0, duplicates = 0;
-
             for (let i = 0; i < ids.length; i++) {
-                const id = ids[i];
-                progressText.textContent = `${i + 1} / ${ids.length} (ID: ${id})`;
+                progressText.textContent = `${i + 1} / ${ids.length}`;
                 progressFill.style.width = `${((i + 1) / ids.length) * 100}%`;
-                
-                const result = await loadItemById(id, category);
-                if (result.success) {
-                    success++;
-                    renderItems();
-                    renderCategoryFilters();
-                } else if (result.reason === 'duplicado') {
-                    duplicates++;
-                } else {
-                    failed++;
-                }
-                
+                const result = await loadItemById(ids[i], category);
+                if (result.success) { success++; renderItems(); renderCategoryFilters(); }
+                else if (result.reason === 'duplicado') duplicates++;
+                else failed++;
                 await new Promise(r => setTimeout(r, 300));
             }
 
             loadBtn.disabled = false;
             setTimeout(() => progressBar.classList.remove('show'), 1000);
 
-            let msg = `✅ ${success} guardados en "${cat.name}"`;
-            if (duplicates > 0) msg += ` | ⚠️ ${duplicates} duplicados`;
-            if (failed > 0) msg += ` | ❌ ${failed} fallidos`;
+            let msg = `${success} guardados`;
+            if (duplicates > 0) msg += ` · ${duplicates} duplicados`;
+            if (failed > 0) msg += ` · ${failed} fallidos`;
             showToast(msg, failed > 0 ? 'warning' : 'success');
-            
             document.getElementById('itemIdInput').value = '';
         }
 
-        // ============ RENDER ITEMS ============
         function getQualityName(qualityId) {
             const q = {'0':'poor','1':'common','2':'uncommon','3':'rare','4':'epic','5':'legendary','6':'artifact','7':'heirloom'};
             return q[qualityId] || 'common';
@@ -1125,10 +1210,7 @@
         function renderItems() {
             const grid = document.getElementById('itemsGrid');
             const emptyState = document.getElementById('emptyState');
-
-            const filtered = currentCategoryFilter === 'all' 
-                ? appData.items 
-                : appData.items.filter(i => i.category === currentCategoryFilter);
+            const filtered = currentCategoryFilter === 'all' ? appData.items : appData.items.filter(i => i.category === currentCategoryFilter);
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
@@ -1145,7 +1227,7 @@
                 const iconUrl = getIconUrl(item.icon);
                 const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
                 const cat = appData.categories.find(c => c.id === item.category);
-                const catLabel = cat ? `${cat.emoji} ${cat.name}` : '📦';
+                const catLabel = cat ? `${cat.emoji} ${cat.name}` : 'Sin categoría';
                 
                 const card = document.createElement('div');
                 card.className = `item-card ${quality}`;
@@ -1159,18 +1241,17 @@
                         </div>
                         <div class="item-info">
                             <div class="item-name ${quality}">${item.name}</div>
-                            <div class="item-id">ID: ${item.id}</div>
-                            <div class="item-icon-name">${item.icon}</div>
+                            <div class="item-meta">ID ${item.id} · ${item.icon}</div>
                         </div>
                     </div>
                     <div class="item-actions">
-                        <button class="btn-action btn-copy-url" onclick="copyText('${getIconUrl(item.icon)}')">📋 URL</button>
-                        <button class="btn-action btn-copy-icon" onclick="copyImage('${item.icon}','${safeName}')">🖼️ IMG</button>
-                        <button class="btn-action btn-download" onclick="downloadIcon('${item.icon}','${safeName}')">💾 Descargar</button>
-                        <button class="btn-action btn-copy-html" onclick="copyHtml('${item.icon}','${safeName}')">📝 HTML</button>
-                        <button class="btn-action btn-wowhead" onclick="window.open('https://es.wowhead.com/item=${item.id}','_blank')">🔗 Wowhead</button>
-                        <button class="btn-action btn-change-cat" onclick="openChangeCategoryModal(${realIndex})">📂 Categoría</button>
-                        <button class="btn-action btn-remove" onclick="removeItem(${realIndex})">✖ Eliminar</button>
+                        <button class="btn-mini" onclick="copyText('${getIconUrl(item.icon)}')">Copiar URL</button>
+                        <button class="btn-mini" onclick="copyImage('${item.icon}','${safeName}')">Copiar IMG</button>
+                        <button class="btn-mini" onclick="downloadIcon('${item.icon}','${safeName}')">Descargar</button>
+                        <button class="btn-mini" onclick="copyHtml('${item.icon}','${safeName}')">Copiar HTML</button>
+                        <button class="btn-mini" onclick="window.open('https://es.wowhead.com/item=${item.id}','_blank')">Wowhead</button>
+                        <button class="btn-mini" onclick="openChangeCategoryModal(${realIndex})">Mover</button>
+                        <button class="btn-mini btn-mini-danger" onclick="removeItem(${realIndex})">Eliminar item</button>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -1183,77 +1264,60 @@
             saveData();
             renderItems();
             renderCategoryFilters();
-            showToast('🗑️ Item eliminado');
+            showToast('Item eliminado');
         }
 
         function clearAll() {
             if (appData.items.length === 0) return;
-            if (!confirm(`¿Eliminar TODOS los ${appData.items.length} items? (Las categorías se conservan)`)) return;
+            if (!confirm(`¿Eliminar los ${appData.items.length} items del compendio?`)) return;
             appData.items = [];
             saveData();
             renderItems();
             renderCategoryFilters();
-            showToast('🗑️ Todo eliminado');
+            showToast('Compendio vaciado');
         }
 
-        // ============ EXPORTAR / IMPORTAR ============
         function exportData() {
-            if (appData.items.length === 0) {
-                showToast('⚠️ No hay items para exportar', 'warning');
-                return;
-            }
+            if (appData.items.length === 0) { showToast('No hay items que exportar', 'warning'); return; }
             const blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `afterwow_collection_${new Date().toISOString().slice(0,10)}.json`;
+            link.download = `afterwow_${new Date().toISOString().slice(0,10)}.json`;
             link.click();
             URL.revokeObjectURL(link.href);
-            showToast('📤 Colección exportada');
+            showToast('Compendio exportado');
         }
 
         function importData(event) {
             const file = event.target.files[0];
             if (!file) return;
-            
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
                     const imported = JSON.parse(e.target.result);
                     if (!imported.categories || !imported.items) throw new Error('Formato inválido');
-                    
-                    if (confirm(`¿Importar ${imported.items.length} items y ${imported.categories.length} categorías? (se añadirán a tu colección actual)`)) {
-                        imported.categories.forEach(cat => {
-                            if (!appData.categories.find(c => c.id === cat.id)) {
-                                appData.categories.push(cat);
-                            }
-                        });
-                        imported.items.forEach(item => {
-                            if (!appData.items.find(i => i.id === item.id)) {
-                                appData.items.push(item);
-                            }
-                        });
+                    if (confirm(`¿Importar ${imported.items.length} items y ${imported.categories.length} categorías?`)) {
+                        imported.categories.forEach(cat => { if (!appData.categories.find(c => c.id === cat.id)) appData.categories.push(cat); });
+                        imported.items.forEach(item => { if (!appData.items.find(i => i.id === item.id)) appData.items.push(item); });
                         saveData();
                         renderCategorySelect();
                         renderCategoryFilters();
                         renderItems();
-                        showToast(`✅ Importación completa`);
+                        showToast('Importación completada');
                     }
-                } catch (e) {
-                    showToast('❌ Error: archivo inválido', 'error');
-                }
+                } catch (e) { showToast('Archivo inválido', 'error'); }
             };
             reader.readAsText(file);
             event.target.value = '';
         }
 
-        // ============ COPIA / DESCARGA ============
         function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => showToast('✅ URL copiada'))
+            navigator.clipboard.writeText(text).then(() => showToast('URL copiada'))
                 .catch(() => {
                     const t = document.createElement('textarea');
                     t.value = text; document.body.appendChild(t); t.select();
                     document.execCommand('copy'); document.body.removeChild(t);
-                    showToast('✅ URL copiada');
+                    showToast('URL copiada');
                 });
         }
 
@@ -1266,23 +1330,18 @@
                 img.crossOrigin = 'anonymous';
                 img.src = URL.createObjectURL(blob);
                 await new Promise((res, rej) => { img.onload = res; img.onerror = rej; });
-                
                 const canvas = document.createElement('canvas');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 canvas.getContext('2d').drawImage(img, 0, 0);
-                
                 canvas.toBlob(async (pngBlob) => {
                     try {
                         await navigator.clipboard.write([new ClipboardItem({ 'image/png': pngBlob })]);
-                        showToast('✅ Imagen copiada - Pega con Ctrl+V');
+                        showToast('Imagen copiada · Ctrl+V para pegar');
                     } catch (e) { copyText(url); }
                 }, 'image/png');
                 URL.revokeObjectURL(img.src);
-            } catch (e) {
-                showToast('⚠️ No se pudo copiar', 'warning');
-                copyText(url);
-            }
+            } catch (e) { copyText(url); }
         }
 
         function downloadIcon(iconName, itemName) {
@@ -1296,15 +1355,14 @@
                 link.click();
                 document.body.removeChild(link);
                 URL.revokeObjectURL(link.href);
-                showToast('💾 Descargando');
+                showToast('Descarga iniciada');
             }).catch(() => window.open(url, '_blank'));
         }
 
         function copyHtml(iconName, itemName) {
-            copyText(`<img src="${getIconUrl(iconName)}" alt="${itemName}" width="56" height="56" style="border-radius:4px;">`);
+            copyText(`<img src="${getIconUrl(iconName)}" alt="${itemName}" width="56" height="56">`);
         }
 
-        // ============ EVENTOS ============
         document.getElementById('itemIdInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') addItemsByIds();
         });
@@ -1316,12 +1374,9 @@
         });
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
-            }
+            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
         });
 
-        // ============ INICIALIZAR ============
         loadData();
         renderCategorySelect();
         renderCategoryFilters();
