@@ -33,9 +33,7 @@
             line-height: 1.6;
         }
 
-        /* ========================================
-           HERO SECTION - PANTALLA COMPLETA
-           ======================================== */
+        /* HERO */
         .hero {
             position: relative;
             height: 100vh;
@@ -52,7 +50,6 @@
             text-align: center;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -60,7 +57,6 @@
             background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%);
             pointer-events: none;
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -68,12 +64,10 @@
             max-width: 900px;
             animation: fadeInUp 1.5s ease-out;
         }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .hero-overline {
             font-size: 0.85rem;
             letter-spacing: 0.4em;
@@ -82,7 +76,6 @@
             margin-bottom: 24px;
             font-weight: 600;
         }
-
         .hero-title {
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 700;
@@ -95,7 +88,6 @@
                 0 2px 20px rgba(0,0,0,0.8),
                 0 0 60px rgba(201, 169, 97, 0.3);
         }
-
         .hero-title .accent {
             background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-dim) 100%);
             -webkit-background-clip: text;
@@ -103,7 +95,6 @@
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
-
         .ornament {
             display: flex;
             align-items: center;
@@ -122,7 +113,6 @@
             font-size: 0.8rem;
             letter-spacing: 0.3em;
         }
-
         .hero-subtitle {
             font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-secondary);
@@ -131,7 +121,6 @@
             margin: 0 auto 40px;
             line-height: 1.8;
         }
-
         .hero-cta {
             display: inline-block;
             padding: 16px 48px;
@@ -148,7 +137,6 @@
             cursor: pointer;
             overflow: hidden;
         }
-
         .hero-cta::before {
             content: '';
             position: absolute;
@@ -157,7 +145,6 @@
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
-
         .hero-cta:hover {
             background: rgba(201, 169, 97, 0.1);
             border-color: var(--gold-bright);
@@ -166,11 +153,7 @@
                 0 0 30px rgba(201, 169, 97, 0.4),
                 inset 0 0 20px rgba(201, 169, 97, 0.1);
         }
-
-        .hero-cta:hover::before {
-            transform: translateX(100%);
-        }
-
+        .hero-cta:hover::before { transform: translateX(100%); }
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -197,9 +180,7 @@
             50% { transform: translateX(-50%) translateY(-8px); }
         }
 
-        /* ========================================
-           NAVEGACIÓN STICKY
-           ======================================== */
+        /* NAVBAR */
         .navbar {
             position: sticky;
             top: 0;
@@ -236,13 +217,7 @@
             font-weight: 400;
             font-size: 0.85rem;
         }
-
-        .auth-status {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .status-indicator {
+        .storage-info {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -253,39 +228,16 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--text-muted);
-        }
-        .status-dot.connected { background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.5); }
-        .status-dot.viewer { background: var(--gold); box-shadow: 0 0 8px rgba(201, 169, 97, 0.5); }
-        .status-dot.error { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
-
-        .btn-auth {
-            padding: 8px 16px;
-            background: transparent;
-            border: 1px solid var(--border-medium);
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-weight: 600;
-        }
-        .btn-auth:hover {
-            border-color: var(--gold);
-            color: var(--gold-bright);
+            background: #4ade80;
+            box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
         }
 
-        /* ========================================
-           CONTENIDO PRINCIPAL
-           ======================================== */
+        /* CONTENIDO */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 60px 32px;
         }
-
         .section-header {
             margin-bottom: 32px;
             padding-bottom: 16px;
@@ -306,9 +258,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* ========================================
-           PANEL DE AÑADIR ITEMS
-           ======================================== */
+        /* PANEL */
         .panel {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
@@ -325,7 +275,6 @@
         }
         .panel::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
         .panel::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
         .panel-row {
             display: flex;
             gap: 12px;
@@ -333,7 +282,6 @@
             margin-bottom: 16px;
             flex-wrap: wrap;
         }
-
         .panel-label {
             font-size: 0.8rem;
             letter-spacing: 0.15em;
@@ -342,7 +290,6 @@
             font-weight: 600;
             white-space: nowrap;
         }
-
         .input-field, .select-field {
             background: var(--bg-primary);
             border: 1px solid var(--border-medium);
@@ -373,7 +320,6 @@
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-
         .btn-primary {
             border-color: var(--gold);
             color: var(--gold-bright);
@@ -383,11 +329,7 @@
             color: var(--bg-primary);
             box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
         }
-        .btn-primary:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
         .btn-secondary {
             border-color: var(--border-medium);
             color: var(--text-secondary);
@@ -396,7 +338,6 @@
             border-color: var(--gold);
             color: var(--gold-bright);
         }
-
         .btn-danger {
             border-color: #5a2020;
             color: #c84545;
@@ -405,7 +346,6 @@
             background: rgba(200, 69, 69, 0.1);
             border-color: #c84545;
         }
-
         .toolbar {
             display: flex;
             gap: 8px;
@@ -414,11 +354,7 @@
             margin-top: 16px;
             border-top: 1px solid var(--border-subtle);
         }
-
-        .progress-bar {
-            display: none;
-            margin: 16px 0 0 0;
-        }
+        .progress-bar { display: none; margin: 16px 0 0 0; }
         .progress-bar.show { display: block; }
         .progress-track {
             background: var(--bg-primary);
@@ -446,44 +382,7 @@
             letter-spacing: 0.1em;
         }
 
-        /* Sync indicator */
-        .sync-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 3000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(4px);
-        }
-        .sync-overlay.show { display: flex; }
-        .sync-content {
-            background: var(--bg-card);
-            border: 1px solid var(--gold);
-            padding: 32px 48px;
-            text-align: center;
-        }
-        .sync-spinner {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--border-medium);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .sync-text {
-            color: var(--gold-bright);
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-
-        /* ========================================
-           FILTROS
-           ======================================== */
+        /* FILTROS */
         .filters-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
@@ -532,15 +431,12 @@
             color: var(--gold-bright);
         }
 
-        /* ========================================
-           GRID DE ITEMS
-           ======================================== */
+        /* GRID */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-
         .item-card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
@@ -554,7 +450,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
-        
         .item-card.poor { border-left: 2px solid #9d9d9d; }
         .item-card.common { border-left: 2px solid #ffffff; }
         .item-card.uncommon { border-left: 2px solid #1eff00; }
@@ -563,7 +458,6 @@
         .item-card.legendary { border-left: 2px solid #ff8000; }
         .item-card.artifact { border-left: 2px solid #e6cc80; }
         .item-card.heirloom { border-left: 2px solid #00ccff; }
-
         .item-category-badge {
             position: absolute;
             top: 12px;
@@ -576,7 +470,6 @@
             letter-spacing: 0.05em;
             font-weight: 500;
         }
-
         .item-header {
             display: flex;
             align-items: center;
@@ -584,11 +477,7 @@
             margin-bottom: 16px;
             padding-right: 90px;
         }
-        .icon-wrapper {
-            width: 56px;
-            height: 56px;
-            flex-shrink: 0;
-        }
+        .icon-wrapper { width: 56px; height: 56px; flex-shrink: 0; }
         .icon-wrapper img {
             width: 56px;
             height: 56px;
@@ -597,10 +486,7 @@
             border: 1px solid var(--border-medium);
             transition: border-color 0.3s ease;
         }
-        .item-card:hover .icon-wrapper img {
-            border-color: var(--gold);
-        }
-        
+        .item-card:hover .icon-wrapper img { border-color: var(--gold); }
         .item-card.poor .icon-wrapper img { border-color: #9d9d9d; }
         .item-card.common .icon-wrapper img { border-color: #555; }
         .item-card.uncommon .icon-wrapper img { border-color: #1eff00; }
@@ -609,7 +495,6 @@
         .item-card.legendary .icon-wrapper img { border-color: #ff8000; }
         .item-card.artifact .icon-wrapper img { border-color: #e6cc80; }
         .item-card.heirloom .icon-wrapper img { border-color: #00ccff; }
-
         .item-info { flex: 1; min-width: 0; }
         .item-name {
             font-size: 0.95rem;
@@ -626,14 +511,12 @@
         .item-name.legendary { color: #ff8000; }
         .item-name.artifact { color: #e6cc80; }
         .item-name.heirloom { color: #00ccff; }
-
         .item-meta {
             font-size: 0.7rem;
             color: var(--text-muted);
             font-family: 'Consolas', 'Monaco', monospace;
             letter-spacing: 0.05em;
         }
-
         .item-actions {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -659,23 +542,14 @@
             color: var(--gold-bright);
             background: rgba(201, 169, 97, 0.05);
         }
-        .btn-mini.btn-mini-danger {
-            grid-column: span 2;
-        }
+        .btn-mini.btn-mini-danger { grid-column: span 2; }
         .btn-mini.btn-mini-danger:hover {
             border-color: #c84545;
             color: #c84545;
             background: rgba(200, 69, 69, 0.05);
         }
 
-        /* Modo solo lectura: ocultar acciones de edición */
-        body.viewer-mode .editor-only {
-            display: none !important;
-        }
-
-        /* ========================================
-           MODAL
-           ======================================== */
+        /* MODAL */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -688,7 +562,6 @@
             backdrop-filter: blur(4px);
         }
         .modal-overlay.show { display: flex; }
-        
         .modal {
             background: var(--bg-card);
             border: 1px solid var(--gold-dim);
@@ -709,7 +582,6 @@
         }
         .modal::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
         .modal::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
         .modal h2 {
             color: var(--gold-bright);
             margin-bottom: 24px;
@@ -741,24 +613,7 @@
             font-family: inherit;
             outline: none;
         }
-        .modal input:focus, .modal select:focus {
-            border-color: var(--gold);
-        }
-        .modal-info {
-            background: var(--bg-primary);
-            border-left: 2px solid var(--gold);
-            padding: 12px 16px;
-            margin-bottom: 16px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        .modal-info code {
-            background: var(--bg-card);
-            padding: 1px 6px;
-            color: var(--gold-bright);
-            font-size: 0.8rem;
-        }
+        .modal input:focus, .modal select:focus { border-color: var(--gold); }
         .modal-buttons {
             display: flex;
             gap: 12px;
@@ -767,7 +622,6 @@
             padding-top: 20px;
             border-top: 1px solid var(--border-subtle);
         }
-
         .emoji-row {
             display: flex;
             gap: 6px;
@@ -788,9 +642,7 @@
             background: rgba(201, 169, 97, 0.1);
         }
 
-        /* ========================================
-           TOAST
-           ======================================== */
+        /* TOAST */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -813,9 +665,7 @@
         .toast.error { border-color: #c84545; color: #ff8080; }
         .toast.warning { border-color: #c89045; color: #ffb060; }
 
-        /* ========================================
-           ESTADO VACÍO
-           ======================================== */
+        /* EMPTY */
         .empty-state {
             text-align: center;
             padding: 80px 20px;
@@ -834,13 +684,9 @@
             font-weight: 500;
             letter-spacing: 0.05em;
         }
-        .empty-state p {
-            font-size: 0.9rem;
-        }
+        .empty-state p { font-size: 0.9rem; }
 
-        /* ========================================
-           FOOTER
-           ======================================== */
+        /* FOOTER */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-subtle);
@@ -853,9 +699,6 @@
         }
         footer .gold { color: var(--gold); }
 
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
         @media (max-width: 768px) {
             .hero { min-height: 500px; }
             .navbar-content { padding: 0 20px; flex-direction: column; }
@@ -871,7 +714,6 @@
 </head>
 <body>
 
-    <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-overline">Reino de Azeroth · Wrath of the Lich King</div>
@@ -890,31 +732,26 @@
         <div class="scroll-indicator">Desplázate</div>
     </section>
 
-    <!-- ========== NAVEGACIÓN ========== -->
     <nav class="navbar">
         <div class="navbar-content">
             <div class="navbar-brand">
                 After WoW <span class="divider">|</span> <span class="label">Wiki de Iconos</span>
             </div>
-            <div class="auth-status">
-                <div class="status-indicator">
-                    <span class="status-dot" id="statusDot"></span>
-                    <span id="statusText">Cargando...</span>
-                </div>
-                <button class="btn-auth" id="authBtn" onclick="openAuthModal()">Iniciar Sesión</button>
+            <div class="storage-info">
+                <span class="status-dot"></span>
+                <span id="storageText">Almacenamiento local</span>
             </div>
         </div>
     </nav>
 
-    <!-- ========== CONTENIDO PRINCIPAL ========== -->
     <main class="main-container" id="wiki">
         
-        <div class="section-header editor-only">
+        <div class="section-header">
             <div class="section-overline">Gestión de objetos</div>
             <h2 class="section-title">Añadir Items al Compendio</h2>
         </div>
 
-        <div class="panel editor-only">
+        <div class="panel">
             <div class="panel-row">
                 <span class="panel-label">Categoría</span>
                 <select id="categorySelect" class="select-field"></select>
@@ -940,7 +777,6 @@
                 <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Importar</button>
                 <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
                 <button class="btn btn-secondary" onclick="manageCategories()">Gestionar Categorías</button>
-                <button class="btn btn-secondary" onclick="syncFromGitHub()">↻ Sincronizar</button>
                 <button class="btn btn-danger" onclick="clearAll()">Vaciar Compendio</button>
             </div>
         </div>
@@ -965,27 +801,6 @@
         <div><span class="gold">After WoW</span> · Wiki de Iconos del Reino</div>
         <div style="margin-top:8px; font-size:0.75rem; opacity:0.6;">Forjado en las profundidades de Azeroth</div>
     </footer>
-
-    <!-- ========== MODALES ========== -->
-    
-    <!-- Modal de autenticación -->
-    <div class="modal-overlay" id="authModal">
-        <div class="modal">
-            <h2>🔐 Acceso de Administrador</h2>
-            <div class="modal-info">
-                Introduce tu <strong>Personal Access Token</strong> de GitHub para poder editar el compendio.<br><br>
-                Empieza por <code>github_pat_...</code><br><br>
-                El token se guardará en este dispositivo y no tendrás que volver a introducirlo.
-            </div>
-            <label>Token de GitHub</label>
-            <input type="password" id="tokenInput" placeholder="github_pat_...">
-            <div class="modal-buttons">
-                <button class="btn btn-danger" onclick="logout()" id="logoutBtn" style="display:none;">Cerrar Sesión</button>
-                <button class="btn btn-secondary" onclick="closeModal('authModal')">Cancelar</button>
-                <button class="btn btn-primary" onclick="saveToken()">Acceder</button>
-            </div>
-        </div>
-    </div>
 
     <div class="modal-overlay" id="newCategoryModal">
         <div class="modal">
@@ -1023,31 +838,14 @@
         </div>
     </div>
 
-    <!-- Overlay de sincronización -->
-    <div class="sync-overlay" id="syncOverlay">
-        <div class="sync-content">
-            <div class="sync-spinner"></div>
-            <div class="sync-text" id="syncText">Sincronizando con GitHub...</div>
-        </div>
-    </div>
-
     <div class="toast" id="toast"></div>
 
     <script>
         // ============================================
-        // CONFIGURACIÓN GITHUB
+        // CONFIGURACIÓN LOCAL
         // ============================================
-        const GITHUB_USER = 'Leo12105';
-        const GITHUB_REPO = 'bd';
-        const GITHUB_BRANCH = 'main';
-        const DATA_FILE = 'data.json';
-        const TOKEN_KEY = 'afterwow_github_token';
+        const STORAGE_KEY = 'afterwow_data';
 
-        // URLs
-        const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${DATA_FILE}`;
-        const API_URL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${DATA_FILE}`;
-
-        // CORS proxies para Wowhead
         const CORS_PROXIES = [
             'https://corsproxy.io/?',
             'https://api.allorigins.win/raw?url=',
@@ -1059,214 +857,51 @@
         // ============================================
         // ESTADO
         // ============================================
-        let appData = { categories: [], items: [] };
-        let fileSha = null; // Necesario para actualizar archivos en GitHub
+        let appData = { 
+            categories: [
+                { id: 'misc', name: 'Miscelánea', emoji: '📦' }
+            ], 
+            items: [] 
+        };
         let currentCategoryFilter = 'all';
         let workingProxy = null;
         let selectedEmoji = '📦';
         let itemToChangeCategory = null;
-        let isAuthenticated = false;
 
         // ============================================
-        // AUTENTICACIÓN
+        // PERSISTENCIA LOCAL
         // ============================================
-        function getToken() {
-            return localStorage.getItem(TOKEN_KEY);
-        }
-
-        function setToken(token) {
-            localStorage.setItem(TOKEN_KEY, token);
-        }
-
-        function removeToken() {
-            localStorage.removeItem(TOKEN_KEY);
-        }
-
-        function openAuthModal() {
-            const token = getToken();
-            document.getElementById('tokenInput').value = token || '';
-            document.getElementById('logoutBtn').style.display = token ? 'inline-block' : 'none';
-            document.getElementById('authModal').classList.add('show');
-        }
-
-        async function saveToken() {
-            const token = document.getElementById('tokenInput').value.trim();
-            if (!token) {
-                showToast('Introduce un token válido', 'error');
-                return;
-            }
-
-            // Verificar que el token funciona
-            showSync('Verificando token...');
+        function saveToLocal() {
             try {
-                const response = await fetch(API_URL, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                
-                if (!response.ok) {
-                    hideSync();
-                    showToast('Token inválido o sin permisos', 'error');
-                    return;
-                }
-
-                setToken(token);
-                isAuthenticated = true;
-                hideSync();
-                closeModal('authModal');
-                updateAuthUI();
-                showToast('Sesión iniciada correctamente');
-                await syncFromGitHub();
-            } catch (e) {
-                hideSync();
-                showToast('Error al verificar token: ' + e.message, 'error');
-            }
-        }
-
-        function logout() {
-            if (!confirm('¿Cerrar sesión y eliminar el token de este dispositivo?')) return;
-            removeToken();
-            isAuthenticated = false;
-            closeModal('authModal');
-            updateAuthUI();
-            showToast('Sesión cerrada');
-        }
-
-        function updateAuthUI() {
-            const dot = document.getElementById('statusDot');
-            const text = document.getElementById('statusText');
-            const btn = document.getElementById('authBtn');
-            const body = document.body;
-
-            if (isAuthenticated) {
-                dot.className = 'status-dot connected';
-                text.textContent = 'Editor conectado';
-                btn.textContent = 'Mi Sesión';
-                body.classList.remove('viewer-mode');
-            } else {
-                dot.className = 'status-dot viewer';
-                text.textContent = 'Modo Visualización';
-                btn.textContent = 'Iniciar Sesión';
-                body.classList.add('viewer-mode');
-            }
-        }
-
-        // ============================================
-        // GITHUB API
-        // ============================================
-        function showSync(text = 'Sincronizando con GitHub...') {
-            document.getElementById('syncText').textContent = text;
-            document.getElementById('syncOverlay').classList.add('show');
-        }
-
-        function hideSync() {
-            document.getElementById('syncOverlay').classList.remove('show');
-        }
-
-        // Cargar desde GitHub (siempre, sin token)
-        async function loadFromGitHub() {
-            try {
-                // Usar raw URL con timestamp para evitar caché
-                const response = await fetch(`${RAW_URL}?t=${Date.now()}`);
-                if (!response.ok) throw new Error('No se pudo cargar data.json');
-                
-                const data = await response.json();
-                if (data.categories && data.items) {
-                    appData = data;
-                }
-
-                // Si está autenticado, también obtener el SHA del archivo (necesario para actualizar)
-                if (isAuthenticated) {
-                    await refreshFileSha();
-                }
-                
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+                updateStorageInfo();
                 return true;
             } catch (e) {
-                console.error('Error cargando desde GitHub:', e);
-                return false;
-            }
-        }
-
-        async function refreshFileSha() {
-            const token = getToken();
-            if (!token) return;
-            
-            try {
-                const response = await fetch(API_URL, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    fileSha = data.sha;
-                }
-            } catch (e) {
-                console.error('Error obteniendo SHA:', e);
-            }
-        }
-
-        // Guardar en GitHub
-        async function saveToGitHub(commitMessage = 'Update data.json') {
-            const token = getToken();
-            if (!token) {
-                showToast('No tienes permisos para editar', 'error');
-                return false;
-            }
-
-            if (!fileSha) {
-                await refreshFileSha();
-                if (!fileSha) {
-                    showToast('No se pudo obtener el archivo de GitHub', 'error');
-                    return false;
-                }
-            }
-
-            showSync('Guardando en GitHub...');
-            try {
-                const content = JSON.stringify(appData, null, 2);
-                const encodedContent = btoa(unescape(encodeURIComponent(content)));
-
-                const response = await fetch(API_URL, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: commitMessage,
-                        content: encodedContent,
-                        sha: fileSha,
-                        branch: GITHUB_BRANCH
-                    })
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.message || 'Error al guardar');
-                }
-
-                const result = await response.json();
-                fileSha = result.content.sha; // Actualizar SHA para el siguiente guardado
-                hideSync();
-                return true;
-            } catch (e) {
-                hideSync();
                 showToast('Error al guardar: ' + e.message, 'error');
-                console.error(e);
                 return false;
             }
         }
 
-        async function syncFromGitHub() {
-            showSync('Sincronizando...');
-            const ok = await loadFromGitHub();
-            hideSync();
-            if (ok) {
-                renderCategorySelect();
-                renderCategoryFilters();
-                renderItems();
-                showToast('Sincronizado con GitHub');
-            } else {
-                showToast('Error al sincronizar', 'error');
+        function loadFromLocal() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                if (data) {
+                    const parsed = JSON.parse(data);
+                    if (parsed.categories && parsed.items) {
+                        appData = parsed;
+                    }
+                }
+                return true;
+            } catch (e) {
+                console.error('Error cargando datos locales:', e);
+                return false;
             }
+        }
+
+        function updateStorageInfo() {
+            const text = document.getElementById('storageText');
+            const itemCount = appData.items.length;
+            text.textContent = `${itemCount} ${itemCount === 1 ? 'item guardado' : 'items guardados'}`;
         }
 
         // ============================================
@@ -1332,21 +967,18 @@
             });
         }
 
-        async function saveNewCategory() {
+        function saveNewCategory() {
             const name = document.getElementById('newCatName').value.trim();
             if (!name) { showToast('Indica un nombre', 'warning'); return; }
             
             const id = 'cat_' + Date.now();
             appData.categories.push({ id, name, emoji: selectedEmoji });
             
-            const ok = await saveToGitHub(`Add category: ${name}`);
-            if (ok) {
+            if (saveToLocal()) {
                 renderCategorySelect();
                 document.getElementById('categorySelect').value = id;
                 closeModal('newCategoryModal');
                 showToast(`Categoría creada: ${name}`);
-            } else {
-                appData.categories.pop(); // Revertir
             }
         }
 
@@ -1364,21 +996,17 @@
             document.getElementById('changeCategoryModal').classList.add('show');
         }
 
-        async function saveChangeCategory() {
+        function saveChangeCategory() {
             const newCat = document.getElementById('changeCatSelect').value;
             if (itemToChangeCategory === null) return;
             
-            const oldCat = appData.items[itemToChangeCategory].category;
             appData.items[itemToChangeCategory].category = newCat;
             
-            const ok = await saveToGitHub(`Move item to ${newCat}`);
-            if (ok) {
+            if (saveToLocal()) {
                 renderCategoryFilters();
                 renderItems();
                 closeModal('changeCategoryModal');
                 showToast('Categoría actualizada');
-            } else {
-                appData.items[itemToChangeCategory].category = oldCat; // Revertir
             }
         }
 
@@ -1402,9 +1030,14 @@
             document.getElementById('manageCategoriesModal').classList.add('show');
         }
 
-        async function deleteCategory(index) {
+        function deleteCategory(index) {
             const cat = appData.categories[index];
             const count = appData.items.filter(i => i.category === cat.id).length;
+            
+            if (cat.id === 'misc') {
+                showToast('No se puede eliminar Miscelánea', 'warning');
+                return;
+            }
             
             if (count > 0) {
                 if (!confirm(`La categoría "${cat.name}" contiene ${count} items. ¿Eliminarla y mover los items a "Miscelánea"?`)) return;
@@ -1413,16 +1046,14 @@
                 if (!confirm(`¿Eliminar la categoría "${cat.name}"?`)) return;
             }
             
-            const removed = appData.categories.splice(index, 1);
-            const ok = await saveToGitHub(`Delete category: ${cat.name}`);
-            if (ok) {
+            appData.categories.splice(index, 1);
+            
+            if (saveToLocal()) {
                 renderCategorySelect();
                 renderCategoryFilters();
                 renderItems();
                 manageCategories();
                 showToast('Categoría eliminada');
-            } else {
-                appData.categories.splice(index, 0, ...removed); // Revertir
             }
         }
 
@@ -1502,8 +1133,6 @@
 
             const ids = extractIds(input);
             if (ids.length === 0) { showToast('No se encontraron IDs válidos', 'error'); return; }
-
-            const cat = appData.categories.find(c => c.id === category);
             
             const loadBtn = document.getElementById('loadBtn');
             const progressBar = document.getElementById('progressBar');
@@ -1518,23 +1147,15 @@
                 progressText.textContent = `Cargando ${i + 1} / ${ids.length}`;
                 progressFill.style.width = `${((i + 1) / ids.length) * 100}%`;
                 const result = await loadItemFromWowhead(ids[i], category);
-                if (result.success) { success++; renderItems(); renderCategoryFilters(); }
+                if (result.success) { 
+                    success++; 
+                    saveToLocal(); // Guardar progresivamente
+                    renderItems(); 
+                    renderCategoryFilters(); 
+                }
                 else if (result.reason === 'duplicado') duplicates++;
                 else failed++;
-                await new Promise(r => setTimeout(r, 300));
-            }
-
-            // Guardar todo en GitHub al final
-            if (success > 0) {
-                const ok = await saveToGitHub(`Add ${success} items to ${cat.name}`);
-                if (!ok) {
-                    // Si falla el guardado, revertir
-                    showToast('Error al guardar en GitHub', 'error');
-                    await syncFromGitHub();
-                    loadBtn.disabled = false;
-                    progressBar.classList.remove('show');
-                    return;
-                }
+                await new Promise(r => setTimeout(r, 200));
             }
 
             loadBtn.disabled = false;
@@ -1599,42 +1220,39 @@
                         <button class="btn-mini" onclick="downloadIcon('${item.icon}','${safeName}')">Descargar</button>
                         <button class="btn-mini" onclick="copyHtml('${item.icon}','${safeName}')">Copiar HTML</button>
                         <button class="btn-mini" onclick="window.open('https://es.wowhead.com/item=${item.id}','_blank')">Wowhead</button>
-                        <button class="btn-mini editor-only" onclick="openChangeCategoryModal(${realIndex})">Mover</button>
-                        <button class="btn-mini btn-mini-danger editor-only" onclick="removeItem(${realIndex})">Eliminar item</button>
+                        <button class="btn-mini" onclick="openChangeCategoryModal(${realIndex})">Mover</button>
+                        <button class="btn-mini btn-mini-danger" onclick="removeItem(${realIndex})">Eliminar item</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+
+            updateStorageInfo();
         }
 
-        async function removeItem(index) {
+        function removeItem(index) {
             const item = appData.items[index];
             if (!confirm(`¿Eliminar "${item.name}"?`)) return;
             
-            const removed = appData.items.splice(index, 1);
-            const ok = await saveToGitHub(`Remove item: ${item.name}`);
-            if (ok) {
+            appData.items.splice(index, 1);
+            
+            if (saveToLocal()) {
                 renderItems();
                 renderCategoryFilters();
                 showToast('Item eliminado');
-            } else {
-                appData.items.splice(index, 0, ...removed); // Revertir
             }
         }
 
-        async function clearAll() {
+        function clearAll() {
             if (appData.items.length === 0) return;
             if (!confirm(`¿Eliminar los ${appData.items.length} items del compendio?`)) return;
             
-            const backup = [...appData.items];
             appData.items = [];
-            const ok = await saveToGitHub('Clear all items');
-            if (ok) {
+            
+            if (saveToLocal()) {
                 renderItems();
                 renderCategoryFilters();
                 showToast('Compendio vaciado');
-            } else {
-                appData.items = backup; // Revertir
             }
         }
 
@@ -1649,28 +1267,28 @@
             showToast('Compendio exportado');
         }
 
-        async function importData(event) {
+        function importData(event) {
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = async function(e) {
+            reader.onload = function(e) {
                 try {
                     const imported = JSON.parse(e.target.result);
                     if (!imported.categories || !imported.items) throw new Error('Formato inválido');
                     if (!confirm(`¿Importar ${imported.items.length} items y ${imported.categories.length} categorías?`)) return;
                     
-                    const backup = JSON.parse(JSON.stringify(appData));
-                    imported.categories.forEach(cat => { if (!appData.categories.find(c => c.id === cat.id)) appData.categories.push(cat); });
-                    imported.items.forEach(item => { if (!appData.items.find(i => i.id === item.id)) appData.items.push(item); });
+                    imported.categories.forEach(cat => { 
+                        if (!appData.categories.find(c => c.id === cat.id)) appData.categories.push(cat); 
+                    });
+                    imported.items.forEach(item => { 
+                        if (!appData.items.find(i => i.id === item.id)) appData.items.push(item); 
+                    });
                     
-                    const ok = await saveToGitHub('Import data');
-                    if (ok) {
+                    if (saveToLocal()) {
                         renderCategorySelect();
                         renderCategoryFilters();
                         renderItems();
                         showToast('Importación completada');
-                    } else {
-                        appData = backup;
                     }
                 } catch (e) { showToast('Archivo inválido', 'error'); }
             };
@@ -1730,9 +1348,7 @@
             copyText(`<img src="${getIconUrl(iconName)}" alt="${itemName}" width="56" height="56">`);
         }
 
-        // ============================================
         // EVENTOS
-        // ============================================
         document.getElementById('itemIdInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') addItemsByIds();
         });
@@ -1747,37 +1363,13 @@
             if (e.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
         });
 
-        // ============================================
-        // INICIALIZACIÓN
-        // ============================================
-        async function init() {
-            const token = getToken();
-            if (token) {
-                // Verificar token
-                try {
-                    const response = await fetch(API_URL, {
-                        headers: { 'Authorization': `Bearer ${token}` }
-                    });
-                    if (response.ok) {
-                        isAuthenticated = true;
-                        const data = await response.json();
-                        fileSha = data.sha;
-                    }
-                } catch (e) {
-                    console.error('Error verificando token guardado:', e);
-                }
-            }
-
-            updateAuthUI();
-            
-            // Cargar datos desde GitHub
-            showSync('Cargando datos...');
-            await loadFromGitHub();
-            hideSync();
-            
+        // INIT
+        function init() {
+            loadFromLocal();
             renderCategorySelect();
             renderCategoryFilters();
             renderItems();
+            updateStorageInfo();
         }
 
         init();
